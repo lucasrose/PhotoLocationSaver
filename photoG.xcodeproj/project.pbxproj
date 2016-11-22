@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		951E23171DC01F90007A783F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23161DC01F90007A783F /* AppDelegate.swift */; };
-		951E23191DC01F90007A783F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23181DC01F90007A783F /* ViewController.swift */; };
 		951E231C1DC01F90007A783F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951E231A1DC01F90007A783F /* Main.storyboard */; };
 		951E231E1DC01F90007A783F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951E231D1DC01F90007A783F /* Assets.xcassets */; };
 		951E23211DC01F90007A783F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951E231F1DC01F90007A783F /* LaunchScreen.storyboard */; };
 		951E232C1DC01F91007A783F /* photoGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E232B1DC01F91007A783F /* photoGTests.swift */; };
 		951E23371DC01F91007A783F /* photoGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23361DC01F91007A783F /* photoGUITests.swift */; };
+		956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820131DE36648004A98EA /* LocationsTableViewController.swift */; };
+		956820161DE3665F004A98EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820151DE3665F004A98EA /* MapViewController.swift */; };
+		956820181DE3666B004A98EA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820171DE3666B004A98EA /* WebViewController.swift */; };
+		9568201A1DE3667A004A98EA /* FlickrImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820191DE3667A004A98EA /* FlickrImageViewController.swift */; };
+		9568201D1DE376B9004A98EA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568201C1DE376B9004A98EA /* WebKit.framework */; };
+		9568201F1DE376BE004A98EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568201E1DE376BE004A98EA /* MapKit.framework */; };
+		956820211DE3777F004A98EA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956820201DE3777F004A98EA /* CoreLocation.framework */; };
+		956820231DE37AD7004A98EA /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820221DE37AD7004A98EA /* AddLocationViewController.swift */; };
+		956820251DE37B69004A98EA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956820241DE37B69004A98EA /* AVFoundation.framework */; };
+		956820271DE3BD96004A98EA /* MyPhotoLocations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956820261DE3BD96004A98EA /* MyPhotoLocations.plist */; };
+		956820291DE3BE43004A98EA /* PhotoGenres.plist in Resources */ = {isa = PBXBuildFile; fileRef = 956820281DE3BE43004A98EA /* PhotoGenres.plist */; };
+		95C7C13D1DE3DFC000137E6C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +47,6 @@
 /* Begin PBXFileReference section */
 		951E23131DC01F90007A783F /* photoG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951E23161DC01F90007A783F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		951E23181DC01F90007A783F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		951E231B1DC01F90007A783F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		951E231D1DC01F90007A783F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		951E23201DC01F90007A783F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +57,18 @@
 		951E23321DC01F91007A783F /* photoGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = photoGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		951E23361DC01F91007A783F /* photoGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoGUITests.swift; sourceTree = "<group>"; };
 		951E23381DC01F91007A783F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		956820131DE36648004A98EA /* LocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
+		956820151DE3665F004A98EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		956820171DE3666B004A98EA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		956820191DE3667A004A98EA /* FlickrImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageViewController.swift; sourceTree = "<group>"; };
+		9568201C1DE376B9004A98EA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		9568201E1DE376BE004A98EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		956820201DE3777F004A98EA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		956820221DE37AD7004A98EA /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		956820241DE37B69004A98EA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		956820261DE3BD96004A98EA /* MyPhotoLocations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyPhotoLocations.plist; sourceTree = "<group>"; };
+		956820281DE3BE43004A98EA /* PhotoGenres.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PhotoGenres.plist; path = ../PhotoGenres.plist; sourceTree = "<group>"; };
+		95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956820251DE37B69004A98EA /* AVFoundation.framework in Frameworks */,
+				956820211DE3777F004A98EA /* CoreLocation.framework in Frameworks */,
+				9568201F1DE376BE004A98EA /* MapKit.framework in Frameworks */,
+				9568201D1DE376B9004A98EA /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +107,7 @@
 				951E232A1DC01F91007A783F /* photoGTests */,
 				951E23351DC01F91007A783F /* photoGUITests */,
 				951E23141DC01F90007A783F /* Products */,
+				9568201B1DE376B9004A98EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +125,18 @@
 			isa = PBXGroup;
 			children = (
 				951E23161DC01F90007A783F /* AppDelegate.swift */,
-				951E23181DC01F90007A783F /* ViewController.swift */,
+				956820131DE36648004A98EA /* LocationsTableViewController.swift */,
+				956820151DE3665F004A98EA /* MapViewController.swift */,
+				956820171DE3666B004A98EA /* WebViewController.swift */,
+				956820191DE3667A004A98EA /* FlickrImageViewController.swift */,
+				956820221DE37AD7004A98EA /* AddLocationViewController.swift */,
+				95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */,
 				951E231A1DC01F90007A783F /* Main.storyboard */,
 				951E231D1DC01F90007A783F /* Assets.xcassets */,
 				951E231F1DC01F90007A783F /* LaunchScreen.storyboard */,
 				951E23221DC01F91007A783F /* Info.plist */,
+				956820281DE3BE43004A98EA /* PhotoGenres.plist */,
+				956820261DE3BD96004A98EA /* MyPhotoLocations.plist */,
 			);
 			path = photoG;
 			sourceTree = "<group>";
@@ -123,6 +157,17 @@
 				951E23381DC01F91007A783F /* Info.plist */,
 			);
 			path = photoGUITests;
+			sourceTree = "<group>";
+		};
+		9568201B1DE376B9004A98EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				956820241DE37B69004A98EA /* AVFoundation.framework */,
+				956820201DE3777F004A98EA /* CoreLocation.framework */,
+				9568201E1DE376BE004A98EA /* MapKit.framework */,
+				9568201C1DE376B9004A98EA /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +280,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956820271DE3BD96004A98EA /* MyPhotoLocations.plist in Resources */,
+				956820291DE3BE43004A98EA /* PhotoGenres.plist in Resources */,
 				951E23211DC01F90007A783F /* LaunchScreen.storyboard in Resources */,
 				951E231E1DC01F90007A783F /* Assets.xcassets in Resources */,
 				951E231C1DC01F90007A783F /* Main.storyboard in Resources */,
@@ -262,8 +309,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951E23191DC01F90007A783F /* ViewController.swift in Sources */,
+				95C7C13D1DE3DFC000137E6C /* LocationViewController.swift in Sources */,
+				9568201A1DE3667A004A98EA /* FlickrImageViewController.swift in Sources */,
+				956820231DE37AD7004A98EA /* AddLocationViewController.swift in Sources */,
+				956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */,
+				956820161DE3665F004A98EA /* MapViewController.swift in Sources */,
 				951E23171DC01F90007A783F /* AppDelegate.swift in Sources */,
+				956820181DE3666B004A98EA /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MKNX4824H3;
 				INFOPLIST_FILE = photoG/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasrose.photoG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MKNX4824H3;
 				INFOPLIST_FILE = photoG/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasrose.photoG;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +566,7 @@
 				951E233D1DC01F91007A783F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		951E233E1DC01F91007A783F /* Build configuration list for PBXNativeTarget "photoGTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +575,7 @@
 				951E23401DC01F91007A783F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		951E23411DC01F91007A783F /* Build configuration list for PBXNativeTarget "photoGUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +584,7 @@
 				951E23431DC01F91007A783F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

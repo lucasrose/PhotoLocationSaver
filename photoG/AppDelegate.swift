@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var locationManager = CLLocationManager()
+
+    var cameraUseAuthorizedByUser = false
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: {
+            
+            /* "The response parameter is a block whose sole parameter [named here as permissionGranted]
+             indicates whether the user granted or denied permission to record." [Apple]
+             */
+            permissionGranted in
+            
+            if permissionGranted {
+                
+                self.cameraUseAuthorizedByUser = true
+                
+            } else {
+                self.cameraUseAuthorizedByUser = false
+            }
+        })
+        
         return true
     }
 
