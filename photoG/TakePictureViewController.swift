@@ -1,34 +1,26 @@
 //
-//  LocationViewController.swift
+//  TakePictureViewController.swift
 //  photoG
 //
-//  Created by Lucas Rose on 11/21/16.
+//  Created by Lucas Rose on 11/22/16.
 //  Copyright © 2016 Lucas Rose. All rights reserved.
 //
 
 import UIKit
 
-class LocationViewController: UIViewController {
+class TakePictureViewController: UIViewController {
 
-    var dataObjectPassed = [String]()
+    var locationName : String!
+    var locationDetails : String!
+    var locationCoordinates : String!
+    var locationImage : String!
+    var locationNotes : String!
+    var locationGenre : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setTitle()
-        
+
         // Do any additional setup after loading the view.
-    }
-    
-    func setTitle() {
-        let labelRect = CGRect(x: 0, y: 0, width: 300, height: 42)
-        let titleLabel = UILabel(frame: labelRect)
-        titleLabel.text = dataObjectPassed[0] // Photo Location Name
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 2
-        titleLabel.lineBreakMode = .byWordWrapping
-        self.navigationItem.titleView = titleLabel
     }
 
     override func didReceiveMemoryWarning() {

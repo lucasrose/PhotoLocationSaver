@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		951817331DE52B230034C139 /* RecordNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951817321DE52B230034C139 /* RecordNotesViewController.swift */; };
+		951817351DE52B2E0034C139 /* TakePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951817341DE52B2E0034C139 /* TakePictureViewController.swift */; };
 		951E23171DC01F90007A783F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23161DC01F90007A783F /* AppDelegate.swift */; };
 		951E231C1DC01F90007A783F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951E231A1DC01F90007A783F /* Main.storyboard */; };
 		951E231E1DC01F90007A783F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 951E231D1DC01F90007A783F /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		951817321DE52B230034C139 /* RecordNotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordNotesViewController.swift; sourceTree = "<group>"; };
+		951817341DE52B2E0034C139 /* TakePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePictureViewController.swift; sourceTree = "<group>"; };
 		951E23131DC01F90007A783F /* photoG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		951E23161DC01F90007A783F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		951E231B1DC01F90007A783F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,19 +128,13 @@
 		951E23151DC01F90007A783F /* photoG */ = {
 			isa = PBXGroup;
 			children = (
+				95C7C13E1DE4C98300137E6C /* Plist Files */,
 				951E23161DC01F90007A783F /* AppDelegate.swift */,
-				956820131DE36648004A98EA /* LocationsTableViewController.swift */,
-				956820151DE3665F004A98EA /* MapViewController.swift */,
-				956820171DE3666B004A98EA /* WebViewController.swift */,
-				956820191DE3667A004A98EA /* FlickrImageViewController.swift */,
-				956820221DE37AD7004A98EA /* AddLocationViewController.swift */,
-				95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */,
+				95C7C13F1DE4C99100137E6C /* View Controllers */,
 				951E231A1DC01F90007A783F /* Main.storyboard */,
 				951E231D1DC01F90007A783F /* Assets.xcassets */,
 				951E231F1DC01F90007A783F /* LaunchScreen.storyboard */,
 				951E23221DC01F91007A783F /* Info.plist */,
-				956820281DE3BE43004A98EA /* PhotoGenres.plist */,
-				956820261DE3BD96004A98EA /* MyPhotoLocations.plist */,
 			);
 			path = photoG;
 			sourceTree = "<group>";
@@ -168,6 +166,30 @@
 				9568201C1DE376B9004A98EA /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95C7C13E1DE4C98300137E6C /* Plist Files */ = {
+			isa = PBXGroup;
+			children = (
+				956820281DE3BE43004A98EA /* PhotoGenres.plist */,
+				956820261DE3BD96004A98EA /* MyPhotoLocations.plist */,
+			);
+			name = "Plist Files";
+			sourceTree = "<group>";
+		};
+		95C7C13F1DE4C99100137E6C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				956820131DE36648004A98EA /* LocationsTableViewController.swift */,
+				956820151DE3665F004A98EA /* MapViewController.swift */,
+				956820171DE3666B004A98EA /* WebViewController.swift */,
+				956820191DE3667A004A98EA /* FlickrImageViewController.swift */,
+				956820221DE37AD7004A98EA /* AddLocationViewController.swift */,
+				95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */,
+				951817321DE52B230034C139 /* RecordNotesViewController.swift */,
+				951817341DE52B2E0034C139 /* TakePictureViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				951817351DE52B2E0034C139 /* TakePictureViewController.swift in Sources */,
 				95C7C13D1DE3DFC000137E6C /* LocationViewController.swift in Sources */,
+				951817331DE52B230034C139 /* RecordNotesViewController.swift in Sources */,
 				9568201A1DE3667A004A98EA /* FlickrImageViewController.swift in Sources */,
 				956820231DE37AD7004A98EA /* AddLocationViewController.swift in Sources */,
 				956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */,
