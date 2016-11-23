@@ -420,6 +420,12 @@
                     <view key="view" contentMode="scaleToFill" id="Wic-8B-a5c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
+                                <rect key="frame" x="62" y="127" width="250" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Take Picture" id="eyH-rZ-qOD">
@@ -429,11 +435,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="L8Q-IO-yBW" id="yJ1-I2-3xu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzy-al-3FL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AYc-5i-TWs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5486" y="-890"/>
+            <point key="canvasLocation" x="5485.6000000000004" y="-890.10494752623697"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yDx-Sc-NIY">

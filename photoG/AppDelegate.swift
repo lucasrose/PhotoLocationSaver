@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var cameraUseAuthorizedByUser = false
-
     // Instance variable to hold the object reference of a Dictionary object, the content of which is modifiable at runtime
     var dict_My_Photo_Locations: NSMutableDictionary = NSMutableDictionary()
     var array_Photo_Genres: NSMutableArray = NSMutableArray()
@@ -81,24 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Store the object reference into the instance variable
             array_Photo_Genres = photoGenresArrayFromFileInMainBundle!
         }
-        
-        // - CAMERA SETUP
-        
-        AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: {
-            
-            /* "The response parameter is a block whose sole parameter [named here as permissionGranted]
-             indicates whether the user granted or denied permission to record." [Apple]
-             */
-            permissionGranted in
-            
-            if permissionGranted {
-                
-                self.cameraUseAuthorizedByUser = true
-                
-            } else {
-                self.cameraUseAuthorizedByUser = false
-            }
-        })
         
         return true
     }
