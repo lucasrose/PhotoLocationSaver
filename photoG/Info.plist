@@ -26,7 +26,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This application requires use of your device's camera to take pictures of the photo location.</string>
+	<string>This application requires use of your device&apos;s camera to take pictures of the photo location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires use of your location to store photo spots.</string>
 	<key>UILaunchStoryboardName</key>
@@ -37,6 +37,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This application requires use of your device&apos;s microphone to record audio notes. They will not be shared outside the application.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

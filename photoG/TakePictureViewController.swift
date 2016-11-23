@@ -16,6 +16,7 @@ class TakePictureViewController: UIViewController {
     var locationImage : String!
     var locationNotes : String!
     var locationGenre : String!
+    var locationRecordingURL : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -319,7 +319,10 @@ class LocationsTableViewController: UITableViewController {
             let locationImage = controller.locationImage
             let locationNotes = controller.locationNotes
             let locationGenre = controller.locationGenre
+            let locationRecordingURL = controller.locationRecordingURL
             
+            
+            print(locationRecordingURL)
             // get photo loc genre from picker
             
             //let locationDetails = controller.addTheaterAddressTextField.text!

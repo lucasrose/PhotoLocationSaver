@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -312,7 +314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record Audio Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQa-i1-bdo">
-                                <rect key="frame" x="110" y="323" width="153" height="21"/>
+                                <rect key="frame" x="110" y="368" width="153" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -331,7 +333,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3a1-GY-fL5">
-                                <rect key="frame" x="16" y="113" width="343" height="161"/>
+                                <rect key="frame" x="16" y="113" width="343" height="206"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla par.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -340,34 +342,65 @@
                                     <outlet property="delegate" destination="f2V-iC-sE1" id="L88-qi-eko"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHZ-W3-KJF">
+                                <rect key="frame" x="193" y="400" width="75" height="75"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButtonTapped:" destination="f2V-iC-sE1" eventType="touchUpInside" id="PI8-zi-f1R"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPN-f5-nUo">
-                                <rect key="frame" x="163" y="401" width="49" height="30"/>
+                                <rect key="frame" x="110" y="400" width="75" height="75"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="recordButtonTapped:" destination="f2V-iC-sE1" eventType="touchUpInside" id="MJt-cZ-Esj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-oI-33n">
+                                <rect key="frame" x="110" y="400" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="APe-CN-jQg"/>
+                                    <constraint firstAttribute="height" constant="75" id="X81-wt-eLq"/>
+                                </constraints>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopButtonTapped:" destination="f2V-iC-sE1" eventType="touchUpInside" id="YwJ-ex-xrI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rvJ-27-n7t" firstAttribute="top" secondItem="eu5-MJ-fUJ" secondAttribute="bottom" constant="58" id="36O-DR-EQ6"/>
-                            <constraint firstItem="3a1-GY-fL5" firstAttribute="trailing" secondItem="mrv-Fu-drI" secondAttribute="trailingMargin" id="Bfn-8m-afi"/>
-                            <constraint firstItem="LPN-f5-nUo" firstAttribute="top" secondItem="yQa-i1-bdo" secondAttribute="bottom" constant="57" id="Hzm-zy-vly"/>
-                            <constraint firstItem="3a1-GY-fL5" firstAttribute="centerX" secondItem="yQa-i1-bdo" secondAttribute="centerX" constant="1" id="U8H-vp-4V2"/>
-                            <constraint firstItem="eu5-MJ-fUJ" firstAttribute="leading" secondItem="mrv-Fu-drI" secondAttribute="leading" constant="170" id="V9y-SA-zk2"/>
-                            <constraint firstItem="yQa-i1-bdo" firstAttribute="centerX" secondItem="LPN-f5-nUo" secondAttribute="centerX" constant="-1" id="VJM-HY-5ZV"/>
-                            <constraint firstItem="yQa-i1-bdo" firstAttribute="top" secondItem="3a1-GY-fL5" secondAttribute="bottom" constant="49" id="VvT-sV-zOf"/>
-                            <constraint firstItem="BAv-es-hjS" firstAttribute="top" secondItem="x50-Ly-Gxf" secondAttribute="bottom" constant="20" id="Xr6-um-idh"/>
-                            <constraint firstItem="eu5-MJ-fUJ" firstAttribute="top" secondItem="LPN-f5-nUo" secondAttribute="bottom" constant="99" id="iaw-XR-4u0"/>
-                            <constraint firstItem="3a1-GY-fL5" firstAttribute="leading" secondItem="mrv-Fu-drI" secondAttribute="leadingMargin" id="owD-eO-aeE"/>
-                            <constraint firstItem="3a1-GY-fL5" firstAttribute="top" secondItem="BAv-es-hjS" secondAttribute="bottom" constant="8" symbolic="YES" id="qsb-1J-2On"/>
-                            <constraint firstItem="BAv-es-hjS" firstAttribute="centerX" secondItem="3a1-GY-fL5" secondAttribute="centerX" id="wzU-bC-7Tk"/>
+                            <constraint firstItem="BAv-es-hjS" firstAttribute="centerX" secondItem="3a1-GY-fL5" secondAttribute="centerX" id="0Ei-dc-GBz"/>
+                            <constraint firstItem="3a1-GY-fL5" firstAttribute="trailing" secondItem="mrv-Fu-drI" secondAttribute="trailingMargin" id="406-gM-4N1"/>
+                            <constraint firstItem="yQa-i1-bdo" firstAttribute="leading" secondItem="mrv-Fu-drI" secondAttribute="leadingMargin" constant="94" id="539-Cq-MQa"/>
+                            <constraint firstItem="3a1-GY-fL5" firstAttribute="leading" secondItem="mrv-Fu-drI" secondAttribute="leadingMargin" id="7en-va-saW"/>
+                            <constraint firstItem="WoS-oI-33n" firstAttribute="top" secondItem="VHZ-W3-KJF" secondAttribute="top" id="GyN-NP-dfD"/>
+                            <constraint firstItem="eu5-MJ-fUJ" firstAttribute="top" secondItem="WoS-oI-33n" secondAttribute="bottom" constant="55" id="NQr-oh-CQI"/>
+                            <constraint firstItem="WoS-oI-33n" firstAttribute="baseline" secondItem="LPN-f5-nUo" secondAttribute="firstBaseline" id="OQ0-aL-6Gd"/>
+                            <constraint firstItem="VHZ-W3-KJF" firstAttribute="leading" secondItem="WoS-oI-33n" secondAttribute="trailing" constant="8" symbolic="YES" id="PwH-IO-2tA"/>
+                            <constraint firstItem="3a1-GY-fL5" firstAttribute="top" secondItem="BAv-es-hjS" secondAttribute="bottom" constant="8" symbolic="YES" id="ZYA-9U-LZx"/>
+                            <constraint firstItem="rvJ-27-n7t" firstAttribute="top" secondItem="eu5-MJ-fUJ" secondAttribute="bottom" constant="58" id="bR3-xc-imD"/>
+                            <constraint firstItem="WoS-oI-33n" firstAttribute="top" secondItem="LPN-f5-nUo" secondAttribute="top" id="bWP-5A-M5S"/>
+                            <constraint firstItem="BAv-es-hjS" firstAttribute="top" secondItem="x50-Ly-Gxf" secondAttribute="bottom" constant="20" id="ckl-aV-fbk"/>
+                            <constraint firstItem="yQa-i1-bdo" firstAttribute="leading" secondItem="LPN-f5-nUo" secondAttribute="leading" id="dqH-Yd-kh0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VHZ-W3-KJF" secondAttribute="trailing" constant="91" id="iCW-0F-Gl3"/>
+                            <constraint firstItem="yQa-i1-bdo" firstAttribute="top" secondItem="3a1-GY-fL5" secondAttribute="bottom" constant="49" id="kVw-6m-dBY"/>
+                            <constraint firstItem="WoS-oI-33n" firstAttribute="baseline" secondItem="VHZ-W3-KJF" secondAttribute="baseline" id="pmg-mZ-tty"/>
+                            <constraint firstItem="LPN-f5-nUo" firstAttribute="leading" secondItem="WoS-oI-33n" secondAttribute="leading" id="rSv-99-FP4"/>
+                            <constraint firstItem="VHZ-W3-KJF" firstAttribute="leading" secondItem="LPN-f5-nUo" secondAttribute="trailing" constant="8" symbolic="YES" id="sY6-uq-3Mc"/>
+                            <constraint firstItem="LPN-f5-nUo" firstAttribute="baseline" secondItem="VHZ-W3-KJF" secondAttribute="firstBaseline" id="tMK-5V-TOo"/>
+                            <constraint firstItem="yQa-i1-bdo" firstAttribute="centerX" secondItem="eu5-MJ-fUJ" secondAttribute="centerX" id="xiQ-rQ-RBr"/>
+                            <constraint firstItem="WoS-oI-33n" firstAttribute="top" secondItem="yQa-i1-bdo" secondAttribute="bottom" constant="11" id="yOx-7U-gXh"/>
+                            <constraint firstItem="LPN-f5-nUo" firstAttribute="baseline" secondItem="WoS-oI-33n" secondAttribute="firstBaseline" id="zU0-6d-WDY"/>
                         </constraints>
                         <connections>
                             <action selector="userTappedBackgroundWithSender:" destination="f2V-iC-sE1" eventType="touchDown" id="5fz-Kw-RQO"/>
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="VHZ-W3-KJF" id="9ag-im-2FW"/>
+                        <outlet property="recordButton" destination="LPN-f5-nUo" id="7jn-aw-LLE"/>
+                        <outlet property="stopButton" destination="WoS-oI-33n" id="Pun-xK-GJu"/>
                         <outlet property="writtenNotesTextView" destination="3a1-GY-fL5" id="hZg-cP-sqk"/>
                         <segue destination="HCM-wS-Tcf" kind="show" identifier="TakePicture" id="JBx-M4-YCT"/>
                     </connections>
