@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecordNotesViewController: UIViewController {
+class RecordNotesViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet var writtenNotesTextView: UITextView!
     
@@ -19,6 +19,8 @@ class RecordNotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        writtenNotesTextView.text = ""
 
         // Do any additional setup after loading the view.
     }
@@ -33,6 +35,26 @@ class RecordNotesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    /*
+     ---------------------------------
+     MARK: - Keyboard Handling Methods
+     ---------------------------------
+     */
+    
+    // This method is invoked when the user taps the Done key on the keyboard
+    @IBAction func keyboardDone(_ sender: UITextView) {
+        sender.resignFirstResponder()
+    }
+    
+    /*
+     ------------------------------
+     MARK: - User Tapped Background
+     ------------------------------
+     */
+    @IBAction func userTappedBackground(sender: AnyObject) {
+        view.endEditing(true)
+    }
 
     
     // MARK: - Navigation

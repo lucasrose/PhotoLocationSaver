@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var locationManager = CLLocationManager()
-
     var cameraUseAuthorizedByUser = false
 
     // Instance variable to hold the object reference of a Dictionary object, the content of which is modifiable at runtime
@@ -86,8 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // - CAMERA SETUP
         
-        self.locationManager.requestWhenInUseAuthorization()
-        
         AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: {
             
             /* "The response parameter is a block whose sole parameter [named here as permissionGranted]
@@ -144,7 +140,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 
