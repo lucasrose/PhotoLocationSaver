@@ -52,6 +52,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Photo Locations" id="qAX-CZ-vf9"/>
                     <connections>
+                        <outlet property="photoLocationsTableView" destination="btR-1A-me3" id="eaq-6f-j8Q"/>
                         <segue destination="e0P-5O-hAw" kind="show" identifier="ShowWeb" id="cr6-1A-hIt"/>
                         <segue destination="EPK-4t-Fcv" kind="show" identifier="AddLocation" id="KDW-Wn-jLq"/>
                         <segue destination="c7n-zw-zwS" kind="show" identifier="ShowLocationCell" id="RXf-rA-zql"/>

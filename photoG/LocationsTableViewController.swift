@@ -164,7 +164,7 @@ class LocationsTableViewController: UITableViewController {
                 
                 // Since the dictionary has been changed, obtain the photo genre names again
                 myPhotoGenres = applicationDelegate.dict_My_Photo_Locations.allKeys as! [String]
-                
+                print(myPhotoGenres)
                 // Sort the genre names within itself in alphabetical order
                 myPhotoGenres.sort { $0 < $1 }
             }
