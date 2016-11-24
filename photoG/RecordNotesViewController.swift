@@ -40,7 +40,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
 
         let locationNameWithoutSpaces = locationName.replacingOccurrences(of: " ", with: "_")
         
-        let soundURL = directoryPath[0].appendingPathComponent("\(locationNameWithoutSpaces).caf")
+        let soundURL = directoryPath[0].appendingPathComponent("\\Recordings\\\(locationNameWithoutSpaces).caf")
         
         let recordSettings =
             [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,

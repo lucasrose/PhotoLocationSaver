@@ -29,6 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // - SET UP DIRECTORIES FOR IMAGES AND RECORDINGS
+        
+        let documentsPath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
+        let imagesPath = documentsPath.appendingPathComponent("Images")
+        let recordingsPath = documentsPath.appendingPathComponent("Recordings")
+
+        do {
+            try FileManager.default.createDirectory(atPath: imagesPath!.path, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            NSLog("Unable to create directory \(error.debugDescription)")
+        }
+        
+        do {
+            try FileManager.default.createDirectory(atPath: recordingsPath!.path, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            NSLog("Unable to create directory \(error.debugDescription)")
+        }
+        
         // - READ FROM PLIST FILES IN DOCUMENT DIRECTORY
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectoryPath = paths[0] as String

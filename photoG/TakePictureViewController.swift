@@ -65,8 +65,22 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         imagePicker.dismiss(animated: true, completion: nil)
         
         // ** NEED TO save image to documents directory
-        let image : UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.image = image
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.imageView.image = image
+        
+        let directoryPath = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask)
+        
+        let locationNameWithoutSpaces = locationName.replacingOccurrences(of: " ", with: "_")
+        
+        if let img = image {
+            if let data = UIImageJPEGRepresentation(img, 0.8) {
+                let filename = directoryPath[0].appendingPathComponent("\\Images\\\(locationNameWithoutSpaces).png")
+                try? data.write(to: filename)
+            }
+        }
+        
+        
     }
     
 

@@ -124,6 +124,7 @@
         <!--Location-->
         <scene sceneID="HN0-bH-di1">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="c7n-zw-zwS" customClass="LocationViewController" customModule="photoG" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDL-6D-sOP"/>
@@ -204,7 +205,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="Qdq-BZ-qyf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3816.8000000000002" y="503.29835082458777"/>
         </scene>
@@ -421,12 +421,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
                                 <rect key="frame" x="62" y="127" width="250" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0RD-1t-itN" firstAttribute="top" secondItem="L8Q-IO-yBW" secondAttribute="bottom" constant="241" id="8R7-Z8-0ct"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="top" secondItem="mOy-OJ-Ou7" secondAttribute="bottom" constant="63" id="AiO-ME-YzO"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="leading" secondItem="Wic-8B-a5c" secondAttribute="leadingMargin" constant="46" id="Miq-Ln-Xdy"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="centerX" secondItem="Wic-8B-a5c" secondAttribute="centerX" id="ucj-c6-ycU"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take Picture" id="eyH-rZ-qOD">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="RiI-sD-bVD">

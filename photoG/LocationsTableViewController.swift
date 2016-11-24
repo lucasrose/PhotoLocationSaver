@@ -312,7 +312,6 @@ class LocationsTableViewController: UITableViewController {
             // Obtain the object reference of the source view controller
             let controller: TakePictureViewController = segue.source as! TakePictureViewController
             
-            // - ****MAKE SURE TO GET AUDIO FILENAME FOR RECORDED NOTES
             let locationName = controller.locationName
             let locationDetails = controller.locationDetails
             let locationCoordinates = controller.locationCoordinates
@@ -320,9 +319,8 @@ class LocationsTableViewController: UITableViewController {
             let locationNotes = controller.locationNotes
             let locationGenre = controller.locationGenre
             let locationRecordingURL = controller.locationRecordingURL
-            
-            
-            print(locationRecordingURL)
+            //let locationPhotoURL = controller.photoURL
+            //
             // get photo loc genre from picker
             
             //let locationDetails = controller.addTheaterAddressTextField.text!
@@ -414,7 +412,7 @@ class LocationsTableViewController: UITableViewController {
             let locationViewController: LocationViewController = segue.destination as! LocationViewController
             
             // Under the Delegation Design Pattern, set the addCityViewController's delegate to be self
-            //locationViewController.dataObjectPassed = dataObjectToPass
+            locationViewController.dataObjectPassed = dataObjectToPass
         }
     }
  
