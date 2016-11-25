@@ -125,7 +125,6 @@
         <!--Location-->
         <scene sceneID="HN0-bH-di1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="c7n-zw-zwS" customClass="LocationViewController" customModule="photoG" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bDL-6D-sOP"/>
@@ -206,6 +205,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="Qdq-BZ-qyf"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3816.8000000000002" y="503.29835082458777"/>
         </scene>
@@ -425,13 +425,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
                                 <rect key="frame" x="62" y="127" width="250" height="250"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWL-dq-3GW">
+                                <rect key="frame" x="164" y="98" width="47" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="y8f-QR-PvZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0RD-1t-itN" firstAttribute="top" secondItem="L8Q-IO-yBW" secondAttribute="bottom" constant="241" id="8R7-Z8-0ct"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="top" secondItem="mOy-OJ-Ou7" secondAttribute="bottom" constant="63" id="AiO-ME-YzO"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="leading" secondItem="Wic-8B-a5c" secondAttribute="leadingMargin" constant="46" id="Miq-Ln-Xdy"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="centerX" secondItem="Wic-8B-a5c" secondAttribute="centerX" id="ucj-c6-ycU"/>
+                            <constraint firstItem="dWL-dq-3GW" firstAttribute="centerX" secondItem="L8Q-IO-yBW" secondAttribute="centerX" id="7b0-mx-WnK"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="centerX" secondItem="Wic-8B-a5c" secondAttribute="centerX" id="Atq-xy-eJI"/>
+                            <constraint firstItem="0RD-1t-itN" firstAttribute="top" secondItem="L8Q-IO-yBW" secondAttribute="bottom" constant="241" id="NLP-yN-3vm"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="top" secondItem="dWL-dq-3GW" secondAttribute="bottom" constant="8" symbolic="YES" id="cmY-MV-2M0"/>
+                            <constraint firstItem="dWL-dq-3GW" firstAttribute="top" secondItem="mOy-OJ-Ou7" secondAttribute="bottom" constant="34" id="iCA-Ce-JWU"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="leading" secondItem="Wic-8B-a5c" secondAttribute="leadingMargin" constant="46" id="lAR-5N-bgA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take Picture" id="eyH-rZ-qOD">

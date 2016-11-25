@@ -51,10 +51,8 @@ class LocationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        // Obtain the name of the given country
         let photoGenre = myPhotoGenres[section]
         
-        // Obtain the list of cities in the given country as AnyObject
         let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[photoGenre] as AnyObject
         
         return photoLocations!.count
@@ -102,7 +100,7 @@ class LocationsTableViewController: UITableViewController {
         let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[givenPhotoGenre] as AnyObject
         
         
-        // Set the cell title to be the movie name
+        print(photoLocations?["\(rowNumber + 1)"] as! [String])
         let location = photoLocations?["\(rowNumber + 1)"] as! [String]
         
         let locationName = location[0]
@@ -319,84 +317,32 @@ class LocationsTableViewController: UITableViewController {
             let locationNotes = controller.locationNotes
             let locationGenre = controller.locationGenre
             let locationRecordingURL = controller.locationRecordingURL
-            //let locationPhotoURL = controller.photoURL
+            let locationPhotoURL = controller.locationRecordingURL
             //
-            // get photo loc genre from picker
-            
-            //let locationDetails = controller.addTheaterAddressTextField.text!
-//            if (theaterText == "" || addressText == ""){
-//                /*
-//                 Create a UIAlertController object; dress it up with title, message, and preferred style;
-//                 and store its object reference into local constant alertController
-//                 */
-//                let alertController = UIAlertController(title: "Error!",
-//                                                        message: "Please enter a valid theater name and address",
-//                                                        preferredStyle: UIAlertControllerStyle.alert)
-//                
-//                // Create a UIAlertAction object and add it to the alert controller
-//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                
-//                // Present the alert controller by calling the presentViewController method
-//                present(alertController, animated: true, completion: nil)
-//            }
-                //check if theater exists and replace if so
-//            else if (theaterNames.contains(theaterText)){
-//                // Change Value address for key
-//                applicationDelegate.dict_My_Theaters.setValue(addressText, forKey: theaterText)
-//            }
-//            else{
-//                applicationDelegate.dict_My_Theaters["\(theaterText)"] = addressText
-//            }
+            let dataObject = [locationName, locationDetails, locationCoordinates, locationImage, locationNotes, locationRecordingURL, locationPhotoURL]
             
             
+            if let photosInGenre = applicationDelegate.dict_My_Photo_Locations[locationGenre] {
+                let photoLocationsInGenre = photosInGenre as! NSMutableDictionary
+                let count = photoLocationsInGenre.count
+                photoLocationsInGenre.setValue(dataObject, forKey: "\(count + 1)")
+                
+                applicationDelegate.dict_My_Photo_Locations.setValue(photoLocationsInGenre, forKey: locationGenre)
+                
+            } else{
+                var newDictionary = NSMutableDictionary()
+                newDictionary.setValue(dataObject, forKey: "\(1)")
+                applicationDelegate.dict_My_Photo_Locations.setValue(newDictionary, forKey: locationGenre)
+            }
+            
+            
+            
+            myPhotoGenres = applicationDelegate.dict_My_Photo_Locations.allKeys as! [String]
+            myPhotoGenres.sort { $0 < $1 }
+            
+            
+            tableView.reloadData()
         }
-//        else if segue.identifier == "EditTheater-Save" {
-//            let controller: EditTheaterViewController = segue.source as! EditTheaterViewController
-//            
-//            let theaterText = controller.editTheaterTextField.text!
-//            let addressText = controller.editTheaterAddressTextField.text!
-//            
-//            if (theaterText == "" || addressText == ""){
-//                /*
-//                 Create a UIAlertController object; dress it up with title, message, and preferred style;
-//                 and store its object reference into local constant alertController
-//                 */
-//                let alertController = UIAlertController(title: "Error!",
-//                                                        message: "Please enter a valid theater name and address",
-//                                                        preferredStyle: UIAlertControllerStyle.alert)
-//                
-//                // Create a UIAlertAction object and add it to the alert controller
-//                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                
-//                // Present the alert controller by calling the presentViewController method
-//                present(alertController, animated: true, completion: nil)
-//            }
-//                
-//            else if (theaterText == " " && addressText == " "){
-//                //delete theater
-//                applicationDelegate.dict_My_Theaters.removeObject(forKey: theater)
-//            }
-//            else if (theaterNames.contains(theaterText)){
-//                applicationDelegate.dict_My_Theaters.setValue(addressText, forKey: theaterText)
-//            }
-//            else if (theater != theaterText){
-//                applicationDelegate.dict_My_Theaters.removeObject(forKey: theater)
-//                applicationDelegate.dict_My_Theaters["\(theaterText)"] = addressText
-//            }
-//        }
-        
-//        theaterNames = applicationDelegate.dict_My_Theaters.allKeys as! [String]
-//        
-//        // Sort the country names within itself in alphabetical order
-//        theaterNames.sort { $0 < $1 }
-//        
-//        // Obtain the number of the row in the middle of the university names list
-//        let numberOfRowToShow = Int(theaterNames.count / 2)
-//        
-//        // Show the picker view of the university names from the middle
-//        pickerView.selectRow(numberOfRowToShow, inComponent: 0, animated: false)
-//        
-//        pickerView.reloadAllComponents()
     }
 
     // MARK: - Navigation

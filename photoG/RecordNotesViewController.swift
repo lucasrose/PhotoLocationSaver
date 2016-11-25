@@ -16,10 +16,10 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var recordButton: UIButton!
-    var locationName : String!
-    var locationDetails : String!
-    var locationGenre : String!
-    var locationCoordinates : String!
+    var locationName = ""
+    var locationDetails = ""
+    var locationGenre = ""
+    var locationCoordinates = ""
     var locationRecordingURL = ""
     
     var audioSession: AVAudioSession!

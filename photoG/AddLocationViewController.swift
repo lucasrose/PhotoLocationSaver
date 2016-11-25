@@ -80,8 +80,8 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             
             let photoGenre = photoGenres[selectedRowNumber]
             
-            recordNotesViewController.locationName = locationNameTextField.text
-            recordNotesViewController.locationDetails = locationDetailsTextField.text
+            recordNotesViewController.locationName = locationNameTextField.text!
+            recordNotesViewController.locationDetails = locationDetailsTextField.text!
             recordNotesViewController.locationGenre = photoGenre
             recordNotesViewController.locationCoordinates = coordinates
         }

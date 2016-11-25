@@ -12,13 +12,13 @@ import AVFoundation
 class TakePictureViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
-    var locationName : String!
-    var locationDetails : String!
-    var locationCoordinates : String!
-    var locationImage : String!
-    var locationNotes : String!
-    var locationGenre : String!
-    var locationRecordingURL : String!
+    var locationName = ""
+    var locationDetails = ""
+    var locationCoordinates = ""
+    var locationImage = ""
+    var locationNotes = ""
+    var locationGenre = ""
+    var locationRecordingURL = ""
     
     var cameraUseAuthorizedByUser = false
 
@@ -34,7 +34,7 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         imagePicker.sourceType = .camera
         
         present(imagePicker, animated: true, completion: nil)
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -50,7 +50,6 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
              indicates whether the user granted or denied permission to record." [Apple]
              */
             permissionGranted in
-            
             if permissionGranted {
                 
                 self.cameraUseAuthorizedByUser = true
@@ -61,13 +60,19 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         })
     }
     
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.imageView.image = image
+            saveImageToDocumentsDirectory(image: image)
+        }
+
         imagePicker.dismiss(animated: true, completion: nil)
         
+    }
+    
+    func saveImageToDocumentsDirectory(image: UIImage?){
         // ** NEED TO save image to documents directory
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        self.imageView.image = image
-        
         let directoryPath = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask)
         
@@ -77,10 +82,10 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
             if let data = UIImageJPEGRepresentation(img, 0.8) {
                 let filename = directoryPath[0].appendingPathComponent("\\Images\\\(locationNameWithoutSpaces).png")
                 try? data.write(to: filename)
+                print(filename)
             }
         }
-        
-        
+
     }
     
 
