@@ -11,6 +11,7 @@
 			<string>37.390324,-80.065822</string>
 			<string>McAfee&apos;s_Knob.jpg</string>
 			<string>Possible sunset panorama</string>
+			<string></string>
 		</array>
 	</dict>
 	<key>Long Exposure</key>
@@ -22,14 +23,7 @@
 			<string>37.353871,-80.599504</string>
 			<string>Cascade_Falls.jpg</string>
 			<string>Possible long exposure from the water</string>
-		</array>
-		<key>2</key>
-		<array>
-			<string>Cascade Falls 2!</string>
-			<string>Waterfall at the top of a 1 mile hike.</string>
-			<string>37.353871,-80.599504</string>
-			<string>Cascade_Falls.jpg</string>
-			<string>Possible long exposure from the water</string>
+			<string></string>
 		</array>
 	</dict>
 </dict>

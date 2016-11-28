@@ -7,13 +7,71 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
-
+class MapViewController: UIViewController, MKMapViewDelegate {
+    @IBOutlet var mapView: MKMapView!
+    
+    let applicationDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    var photoLocationNames = [String]()
+    var photoLocationCoordinates = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Set map view delegate with controller
+        self.mapView.delegate = self
+        
+        getLocations()
+        addLocationsToMap()
+    }
+    
+    func getLocations(){
+        let genres = applicationDelegate.array_Photo_Genres
+        
+        for genre in genres {
+            print(genre)
+            if let currentGenreLocations = applicationDelegate.dict_My_Photo_Locations[genre] as? NSDictionary{
+                var ct = 1
+                while(ct <= currentGenreLocations.count) {
+                    let current = currentGenreLocations.value(forKey: "\(ct)") as! [String]
+                    
+                    photoLocationNames.append(current[0])
+                    photoLocationCoordinates.append(current[2])
+                    ct += 1
+                }
+            }
+
+        }
+        
+    }
+    
+    func addLocationsToMap(){
+        //get all locations from delegate
+        let totalLocations = photoLocationNames.count
+        var i = 0
+        
+        
+        while (i < totalLocations) {
+            let name = photoLocationNames[i]
+            let coordinate = photoLocationCoordinates[i]
+            let coordinateArr = coordinate.components(separatedBy: ",")
+            let x = Double(coordinateArr[0])
+            let y = Double(coordinateArr[1])
+            
+            
+            let currentLocation = CLLocationCoordinate2DMake(x!, y!)
+            // Drop a pin
+            let dropPin = MKPointAnnotation()
+            dropPin.coordinate = currentLocation
+            dropPin.title = name
+            mapView.addAnnotation(dropPin)
+            
+            i += 1
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

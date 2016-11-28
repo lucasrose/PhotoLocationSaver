@@ -12,10 +12,31 @@ class LocationViewController: UIViewController {
 
     var dataObjectPassed = [String]()
     
+    @IBOutlet var showFlickerImagesButton: UIButton!
+    @IBOutlet var showOnMapButton: UIButton!
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var notesTextView: UITextView!
+    @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
+    
+    var coordinates = ""
+    var recordingURL = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(dataObjectPassed)
+
         setTitle()
+        detailLabel.text = dataObjectPassed[1]
+        
+        coordinates = dataObjectPassed[2]
+        
+        let image = UIImage(contentsOfFile: dataObjectPassed[3])
+        imageView.image = image
+        
+        notesTextView.text = dataObjectPassed[4]
+        
+        recordingURL = dataObjectPassed[5]
         
         // Do any additional setup after loading the view.
     }
@@ -30,7 +51,7 @@ class LocationViewController: UIViewController {
         titleLabel.lineBreakMode = .byWordWrapping
         self.navigationItem.titleView = titleLabel
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

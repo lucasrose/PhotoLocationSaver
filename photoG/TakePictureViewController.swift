@@ -32,6 +32,7 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
+        imagePicker.cameraCaptureMode = .photo
         
         present(imagePicker, animated: true, completion: nil)
         
@@ -62,14 +63,15 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
+        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imageView.image = image
             saveImageToDocumentsDirectory(image: image)
         }
 
-        imagePicker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
         
     }
+    
     
     func saveImageToDocumentsDirectory(image: UIImage?){
         // ** NEED TO save image to documents directory
@@ -82,7 +84,7 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
             if let data = UIImageJPEGRepresentation(img, 0.8) {
                 let filename = directoryPath[0].appendingPathComponent("\\Images\\\(locationNameWithoutSpaces).png")
                 try? data.write(to: filename)
-                print(filename)
+                locationImage = filename.absoluteString
             }
         }
 

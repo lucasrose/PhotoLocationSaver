@@ -76,6 +76,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YwL-pI-pKe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BoC-kW-5Sa" id="pfO-LA-bNT"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,6 +90,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo Locations" id="ZLk-d6-DPD"/>
+                    <connections>
+                        <outlet property="mapView" destination="YwL-pI-pKe" id="ooj-TJ-yjd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0Z-2Y-t5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,6 +210,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="Qdq-BZ-qyf"/>
+                    <connections>
+                        <outlet property="detailLabel" destination="OfW-RH-LC8" id="Eue-HH-f09"/>
+                        <outlet property="imageView" destination="uS6-tL-e08" id="Oxu-xE-RXq"/>
+                        <outlet property="notesTextView" destination="sO4-ec-P0U" id="G07-To-gRA"/>
+                        <outlet property="playButton" destination="DJA-uh-Ljx" id="Bwn-ft-eLT"/>
+                        <outlet property="showFlickerImagesButton" destination="8yG-eo-Yc7" id="Wys-Tx-0ht"/>
+                        <outlet property="showOnMapButton" destination="sZv-Je-02T" id="gdm-AV-VFD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -422,7 +436,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EF0C93BD-A79E-4C4C-97FF-6D1A0638C10F" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
                                 <rect key="frame" x="62" y="127" width="250" height="250"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWL-dq-3GW">
@@ -519,4 +533,22 @@
             <point key="canvasLocation" x="1882.4000000000001" y="-0.44977511244377816"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="EF0C93BD-A79E-4C4C-97FF-6D1A0638C10F" width="40" height="40">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
+GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
+V05TQ29sb3KAAoAMEiTAAACAA4AKWHs0MCwgNDB90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
+gAWABoAJEAXTIAohIiMkV05TLmJhc2VbTlMucmVsYXRpdmWAAIAIgAdfEHxmaWxlOi8vL0FwcGxpY2F0
+aW9ucy9YY29kZS5hcHAvQ29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVyS2l0LmlkZXBs
+dWdpbi9Db250ZW50cy9SZXNvdXJjZXMvSUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0icoKSpaJGNsYXNz
+bmFtZVgkY2xhc3Nlc1VOU1VSTKIpK1hOU09iamVjdNInKC0uV05TQXJyYXmiLSvTMDEKMjM0V05TV2hp
+dGVcTlNDb2xvclNwYWNlRDAgMAAQA4AL0icoNjdXTlNDb2xvcqI2K9InKDk6V05TSW1hZ2WiOStfEA9O
+U0tleWVkQXJjaGl2ZXLRPT5Ucm9vdIABAAgAEQAaACMALQAyADcARQBLAFYAXQBkAHEAeACAAIIAhACJ
+AIsAjQCWAJsApgCoAKoArACxALQAtgC4ALoAvADDAMsA1wDZANsA3QFcAWEBbAF1AXsBfgGHAYwBlAGX
+AZ4BpgGzAbgBugG8AcEByQHMAdEB2QHcAe4B8QH2AAAAAAAAAgEAAAAAAAAAPwAAAAAAAAAAAAAAAAAA
+Afg
+</mutableData>
+        </image>
+    </resources>
 </document>

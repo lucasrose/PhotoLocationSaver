@@ -100,7 +100,6 @@ class LocationsTableViewController: UITableViewController {
         let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[givenPhotoGenre] as AnyObject
         
         
-        print(photoLocations?["\(rowNumber + 1)"] as! [String])
         let location = photoLocations?["\(rowNumber + 1)"] as! [String]
         
         let locationName = location[0]
@@ -317,9 +316,8 @@ class LocationsTableViewController: UITableViewController {
             let locationNotes = controller.locationNotes
             let locationGenre = controller.locationGenre
             let locationRecordingURL = controller.locationRecordingURL
-            let locationPhotoURL = controller.locationRecordingURL
             //
-            let dataObject = [locationName, locationDetails, locationCoordinates, locationImage, locationNotes, locationRecordingURL, locationPhotoURL]
+            let dataObject = [locationName, locationDetails, locationCoordinates, locationImage, locationNotes, locationRecordingURL]
             
             
             if let photosInGenre = applicationDelegate.dict_My_Photo_Locations[locationGenre] {
