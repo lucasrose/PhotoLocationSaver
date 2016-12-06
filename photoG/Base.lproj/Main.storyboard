@@ -167,14 +167,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZv-Je-02T">
                                 <rect key="frame" x="16" y="580" width="96" height="30"/>
                                 <state key="normal" title="Show On Map"/>
+                                <connections>
+                                    <action selector="showOnMapButtonTapped:" destination="c7n-zw-zwS" eventType="touchUpInside" id="cyX-vo-arb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yG-eo-Yc7">
                                 <rect key="frame" x="226" y="580" width="133" height="30"/>
                                 <state key="normal" title="Show Flickr Images"/>
+                                <connections>
+                                    <action selector="showOnFlickrButtonTapped:" destination="c7n-zw-zwS" eventType="touchUpInside" id="4kZ-Hk-KMR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJA-uh-Ljx">
                                 <rect key="frame" x="115" y="542" width="144" height="30"/>
                                 <state key="normal" title="Play Recorded Notes"/>
+                                <connections>
+                                    <action selector="playAudioNotesButtonTapped:" destination="c7n-zw-zwS" eventType="touchUpInside" id="Jzi-4e-spj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcz-1P-Fra">
                                 <rect key="frame" x="163" y="351" width="49" height="21"/>
@@ -218,14 +227,66 @@
                         <outlet property="detailLabel" destination="OfW-RH-LC8" id="Eue-HH-f09"/>
                         <outlet property="locationImageView" destination="uS6-tL-e08" id="5yo-pu-4Pe"/>
                         <outlet property="notesTextView" destination="sO4-ec-P0U" id="G07-To-gRA"/>
-                        <outlet property="playButton" destination="DJA-uh-Ljx" id="Bwn-ft-eLT"/>
-                        <outlet property="showFlickerImagesButton" destination="8yG-eo-Yc7" id="Wys-Tx-0ht"/>
-                        <outlet property="showOnMapButton" destination="sZv-Je-02T" id="gdm-AV-VFD"/>
+                        <segue destination="uzm-r9-gHO" kind="show" identifier="ShowSingleLocationMap" id="WoP-Oh-cjW"/>
+                        <segue destination="yCq-Ns-xNU" kind="show" identifier="ShowSingleLocationFlickr" id="aa1-NW-c8J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3816.8000000000002" y="503.29835082458777"/>
+        </scene>
+        <!--Flickr Image View Controller-->
+        <scene sceneID="6hI-Jz-acc">
+            <objects>
+                <viewController id="yCq-Ns-xNU" customClass="FlickrImageViewController" customModule="photoG" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6A2-0h-jTC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zhl-Ye-DL7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PzI-ed-HJD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RjU-ZZ-CbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4778" y="780"/>
+        </scene>
+        <!--Single Map View Controller-->
+        <scene sceneID="e1x-WW-QGU">
+            <objects>
+                <viewController id="uzm-r9-gHO" customClass="SingleMapViewController" customModule="photoG" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BaN-b1-JbP"/>
+                        <viewControllerLayoutGuide type="bottom" id="4a0-6w-4mx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VST-r1-yBD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1mf-ud-CMP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uzm-r9-gHO" id="Sri-Xn-VA5"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1mf-ud-CMP" firstAttribute="top" secondItem="VST-r1-yBD" secondAttribute="top" id="Ijg-9F-hYR"/>
+                            <constraint firstAttribute="trailing" secondItem="1mf-ud-CMP" secondAttribute="trailing" id="P6d-dd-APL"/>
+                            <constraint firstItem="1mf-ud-CMP" firstAttribute="leading" secondItem="VST-r1-yBD" secondAttribute="leading" id="cPA-gB-EWu"/>
+                            <constraint firstAttribute="bottom" secondItem="1mf-ud-CMP" secondAttribute="bottom" id="po4-C9-InX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="singleLocationMapView" destination="1mf-ud-CMP" id="OFk-1y-DRh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ld1-GN-3Rt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4778" y="82"/>
         </scene>
         <!--Add Location-->
         <scene sceneID="Xik-HP-Fl4">

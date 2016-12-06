@@ -12,15 +12,24 @@ class LocationViewController: UIViewController {
 
     var dataObjectPassed = [String]()
     
-    @IBOutlet var showFlickerImagesButton: UIButton!
-    @IBOutlet var showOnMapButton: UIButton!
-    @IBOutlet var playButton: UIButton!
     @IBOutlet var notesTextView: UITextView!
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var locationImageView: UIImageView!
     
     var coordinates = ""
     var recordingURL = ""
+    
+    @IBAction func playAudioNotesButtonTapped(_ sender: UIButton) {
+    
+    }
+    
+    @IBAction func showOnFlickrButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "ShowSingleLocationFlickr", sender: self)
+    }
+    
+    @IBAction func showOnMapButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "ShowSingleLocationMap", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +61,7 @@ class LocationViewController: UIViewController {
         let titleLabel = UILabel(frame: labelRect)
         titleLabel.text = dataObjectPassed[0] // Photo Location Name
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textAlignment = .center
+        titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
         self.navigationItem.titleView = titleLabel
@@ -64,14 +73,25 @@ class LocationViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "ShowSingleLocationMap"){
+            let singleMapViewController : SingleMapViewController = segue.destination as! SingleMapViewController
+            singleMapViewController.locationName = dataObjectPassed[0]
+            singleMapViewController.locationDetails = dataObjectPassed[1]
+            singleMapViewController.coordinates = coordinates
+            
+        } else if (segue.identifier == "ShowSingleLocationFlickr") {
+            let flickrImageViewController : FlickrImageViewController = segue.destination as! FlickrImageViewController
+            flickrImageViewController.locationName = dataObjectPassed[0]
+        }
     }
-    */
+    
 
 }

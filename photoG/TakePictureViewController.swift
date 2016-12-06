@@ -73,10 +73,7 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         imageView.image = image
         
         saveImageToDocumentsDirectory(image: image)
-        
-        //save image to doc dir.
-        
-        
+                
         dismiss(animated: true, completion: nil)
         
     }
@@ -112,9 +109,6 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
             print("error")
         }
         locationImage = "Images/\(locationNameWithoutSpaces).jpg"
-
-        //http://stackoverflow.com/questions/35685685/how-to-save-an-image-picked-from-a-uiimagepickercontroller-in-swift
-        //http://stackoverflow.com/questions/33916652/how-to-save-image-or-video-from-uipickerviewcontroller-to-document-directory
 
     }
     

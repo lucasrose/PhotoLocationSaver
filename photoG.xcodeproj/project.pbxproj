@@ -15,6 +15,7 @@
 		951E23211DC01F90007A783F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 951E231F1DC01F90007A783F /* LaunchScreen.storyboard */; };
 		951E232C1DC01F91007A783F /* photoGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E232B1DC01F91007A783F /* photoGTests.swift */; };
 		951E23371DC01F91007A783F /* photoGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23361DC01F91007A783F /* photoGUITests.swift */; };
+		951F62EE1DF674EA008CEEDA /* SingleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */; };
 		956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820131DE36648004A98EA /* LocationsTableViewController.swift */; };
 		956820161DE3665F004A98EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820151DE3665F004A98EA /* MapViewController.swift */; };
 		956820181DE3666B004A98EA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820171DE3666B004A98EA /* WebViewController.swift */; };
@@ -61,6 +62,7 @@
 		951E23321DC01F91007A783F /* photoGUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = photoGUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		951E23361DC01F91007A783F /* photoGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoGUITests.swift; sourceTree = "<group>"; };
 		951E23381DC01F91007A783F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleMapViewController.swift; sourceTree = "<group>"; };
 		956820131DE36648004A98EA /* LocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
 		956820151DE3665F004A98EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		956820171DE3666B004A98EA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */,
 				951817321DE52B230034C139 /* RecordNotesViewController.swift */,
 				951817341DE52B2E0034C139 /* TakePictureViewController.swift */,
+				951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				956820231DE37AD7004A98EA /* AddLocationViewController.swift in Sources */,
 				956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */,
 				956820161DE3665F004A98EA /* MapViewController.swift in Sources */,
+				951F62EE1DF674EA008CEEDA /* SingleMapViewController.swift in Sources */,
 				951E23171DC01F90007A783F /* AppDelegate.swift in Sources */,
 				956820181DE3666B004A98EA /* WebViewController.swift in Sources */,
 			);

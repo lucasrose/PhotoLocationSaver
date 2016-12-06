@@ -24,7 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // Set map view delegate with controller
         self.mapView.delegate = self
-        
+        mapView.showsCompass = true
         getLocations()
         addLocationsToMap()
     }

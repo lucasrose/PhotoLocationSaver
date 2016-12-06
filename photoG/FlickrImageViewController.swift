@@ -15,6 +15,8 @@ import UIKit
 
 class FlickrImageViewController: UIViewController {
 
+    var locationName : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
