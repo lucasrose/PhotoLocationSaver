@@ -19,8 +19,6 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         let coordinateArr = coordinates.components(separatedBy: ",")
         
         //wrap in try catch here
@@ -29,19 +27,35 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
         
         let currentLocation = CLLocationCoordinate2DMake(x!, y!)
         // Drop a pin
+        
         let dropPin = MKPointAnnotation()
+        
         dropPin.coordinate = currentLocation
         dropPin.title = locationName
         dropPin.subtitle = locationDetails
+        
         singleLocationMapView.showsCompass = true
+        singleLocationMapView.showsScale = true
+        
         singleLocationMapView.addAnnotation(dropPin)
+        
+        singleLocationMapView.showAnnotations(self.singleLocationMapView.annotations, animated: true)
+        singleLocationMapView.selectAnnotation(dropPin, animated: true)
 
+//        let region = getMapRegion(location: currentLocation)
+//        singleLocationMapView.setRegion(region, animated: true)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getMapRegion(location: CLLocationCoordinate2D) -> MKCoordinateRegion {
+        let latLong = CLLocationDistance.init(8046.72)  //5 mile radius
+        
+        return MKCoordinateRegionMakeWithDistance(location, latLong, latLong)
     }
     
 

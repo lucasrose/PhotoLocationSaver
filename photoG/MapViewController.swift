@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Set map view delegate with controller
         self.mapView.delegate = self
         mapView.showsCompass = true
+        mapView.showsScale = true
         getLocations()
         addLocationsToMap()
     }
@@ -76,6 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             i += 1
         }
+        mapView.showAnnotations(self.mapView.annotations, animated: true)
         
     }
 
