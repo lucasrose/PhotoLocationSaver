@@ -39,11 +39,10 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
         
         singleLocationMapView.addAnnotation(dropPin)
         
-        singleLocationMapView.showAnnotations(self.singleLocationMapView.annotations, animated: true)
         singleLocationMapView.selectAnnotation(dropPin, animated: true)
 
-//        let region = getMapRegion(location: currentLocation)
-//        singleLocationMapView.setRegion(region, animated: true)
+        let region = getMapRegion(location: currentLocation)
+        singleLocationMapView.setRegion(region, animated: true)
         // Do any additional setup after loading the view.
     }
 

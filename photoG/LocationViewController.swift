@@ -7,20 +7,35 @@
 //
 
 import UIKit
+import AVFoundation
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController, AVAudioPlayerDelegate {
 
     var dataObjectPassed = [String]()
     
+    @IBOutlet var playNotesButton: UIButton!
     @IBOutlet var notesTextView: UITextView!
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var locationImageView: UIImageView!
     
     var coordinates = ""
-    var recordingURL = ""
+    var recordingURL : URL!
     
+    var player: AVAudioPlayer!
+    var audioSession: AVAudioSession!
+
     @IBAction func playAudioNotesButtonTapped(_ sender: UIButton) {
-    
+            do {
+                
+                try player = AVAudioPlayer(contentsOf:
+                    (recordingURL))
+                player!.delegate = self
+                player!.prepareToPlay()
+                player!.play()
+            } catch let error as NSError {
+                print("audioPlayer error: \(error.localizedDescription)")
+            }
+        
     }
     
     @IBAction func showOnFlickrButtonTapped(_ sender: UIButton) {
@@ -33,25 +48,43 @@ class LocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        playNotesButton.isEnabled = false
+        playNotesButton.isHidden = true
+        
         setTitle()
         detailLabel.text = dataObjectPassed[1]
         
         coordinates = dataObjectPassed[2]
-        //get image here
+        notesTextView.text = dataObjectPassed[4]
+
+        // Display Image
         
         let paths = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask)[0]
         
         let image = paths.appendingPathComponent(dataObjectPassed[3])
         
-        if (paths.isFileURL){
+        if (image.isFileURL && dataObjectPassed[3] != ""){
             locationImageView.image = UIImage(contentsOfFile: image.path)
         }
         
-        notesTextView.text = dataObjectPassed[4]
+        // Setup Audio Note Playback
         
-        recordingURL = dataObjectPassed[5]
+        audioSession = AVAudioSession.sharedInstance()
+        
+        let audioNotes = paths.appendingPathComponent(dataObjectPassed[5])
+        
+        if (audioNotes.isFileURL && dataObjectPassed[5] != ""){
+            playNotesButton.isHidden = false
+            playNotesButton.isEnabled = true
+            recordingURL = audioNotes
+            do {
+                try audioSession.setCategory(AVAudioSessionCategoryPlayback, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
+            } catch let error as NSError {
+                print("audioSession error: \(error.localizedDescription)")
+            }
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -61,7 +94,7 @@ class LocationViewController: UIViewController {
         let titleLabel = UILabel(frame: labelRect)
         titleLabel.text = dataObjectPassed[0] // Photo Location Name
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.textAlignment = .left
+        titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
         self.navigationItem.titleView = titleLabel

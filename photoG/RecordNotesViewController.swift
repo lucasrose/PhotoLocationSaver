@@ -16,6 +16,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var recordButton: UIButton!
+    
     var locationName = ""
     var locationDetails = ""
     var locationGenre = ""
@@ -35,36 +36,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         stopButton.isHidden = true
         playButton.isEnabled = false
         
-        let directoryPath = FileManager.default.urls(for: .documentDirectory,
-                                    in: .userDomainMask)
-
-        let locationNameWithoutSpaces = locationName.replacingOccurrences(of: " ", with: "_")
         
-        let soundURL = directoryPath[0].appendingPathComponent("Recordings/\(locationNameWithoutSpaces).caf")
-        
-        let recordSettings =
-            [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
-             AVEncoderBitRateKey: 16,
-             AVNumberOfChannelsKey: 2,
-             AVSampleRateKey: 44100.0] as [String : Any]
-        
-        audioSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
-        } catch let error as NSError {
-            print("audioSession error: \(error.localizedDescription)")
-        }
-        
-        do {
-            try recorder = AVAudioRecorder(url: soundURL,
-                                                settings: recordSettings as [String : AnyObject])
-            recorder?.prepareToRecord()
-        } catch let error as NSError {
-            print("audioSession error: \(error.localizedDescription)")
-        }
-        
-        locationRecordingURL = soundURL.absoluteString
 
         // Do any additional setup after loading the view.
     }
@@ -97,7 +69,51 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         }
     }
     
+    func setUpRecordingAndPlayback(){
+        let directoryPath = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask)
+        
+        var uniqueFilename = ""
+        
+        if (locationDetails.characters.count > 10){
+            let index = locationDetails.index(locationDetails.startIndex, offsetBy: 9)
+            uniqueFilename = locationName.appending(locationDetails.substring(to: index))
+        } else{
+            uniqueFilename = locationName.appending(locationDetails)
+        }
+        
+        let locationNameWithoutSpaces = uniqueFilename.replacingOccurrences(of: " ", with: "_")
+        
+        let soundURL = directoryPath[0].appendingPathComponent("Recordings/\(locationNameWithoutSpaces).caf")
+        
+        let recordSettings =
+            [AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue,
+             AVEncoderBitRateKey: 16,
+             AVNumberOfChannelsKey: 2,
+             AVSampleRateKey: 44100.0] as [String : Any]
+        
+        audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: AVAudioSessionCategoryOptions.defaultToSpeaker)
+        } catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        
+        do {
+            try recorder = AVAudioRecorder(url: soundURL,
+                                           settings: recordSettings as [String : AnyObject])
+            recorder?.prepareToRecord()
+        } catch let error as NSError {
+            print("audioSession error: \(error.localizedDescription)")
+        }
+        
+        locationRecordingURL = "Recordings/\(locationNameWithoutSpaces).caf"
+    }
+    
     @IBAction func recordButtonTapped(_ sender: UIButton) {
+        setUpRecordingAndPlayback()
+        
         recordButton.isHidden = true
         recordButton.isEnabled = false
         

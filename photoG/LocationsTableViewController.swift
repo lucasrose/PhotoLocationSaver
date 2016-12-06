@@ -140,6 +140,8 @@ class LocationsTableViewController: UITableViewController {
             let photoLocationNumberToRemove = indexPath.row + 1
             
             if (photoLocationNumberToRemove == photoLocationsInGenre.count){ //last photo location -> good
+                deleteRecordingAndImage(photoLocationsInGenre: photoLocationsInGenre)
+
                 photoLocationsInGenre.removeObject(forKey: "\(photoLocationNumberToRemove)")
             }
             else{                                           //reorder keys then remove last
@@ -153,7 +155,9 @@ class LocationsTableViewController: UITableViewController {
                     key += 1;
                 }
                 
+                deleteRecordingAndImage(photoLocationsInGenre: photoLocationsInGenre)
                 photoLocationsInGenre.removeObject(forKey: "\(photoLocationsInGenre.count)")
+                //remove audio note and image here
             }
 
             if photoLocationsInGenre.count == 0 {
@@ -173,7 +177,37 @@ class LocationsTableViewController: UITableViewController {
         }
     }
     
+    func deleteRecordingAndImage(photoLocationsInGenre: NSMutableDictionary){
+        let deletedPhotoLocation = photoLocationsInGenre.value(forKey: "\(photoLocationsInGenre.count)") as! [String]
+        
+        let imagePath = deletedPhotoLocation[3]
+        let recordingPath = deletedPhotoLocation[5]
+        
+        let directoryPath = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask)
+        
+        let photoFilename = directoryPath[0].appendingPathComponent(imagePath)
+        let recordingFilename = directoryPath[0].appendingPathComponent(recordingPath)
+        
+        if (photoFilename.isFileURL && imagePath != ""){
+            do {
+                try FileManager.default.removeItem(at: photoFilename)
+                print("Deleted photo.")
+            } catch{
+                print("Error deleting photo.")
+            }
+        }
+        
+        if (recordingFilename.isFileURL && recordingPath != ""){
+            do {
+                try FileManager.default.removeItem(at: recordingFilename)
+                print("Deleted recording.")
+            } catch {
+                print("Error deleting recording.")
+            }
+        }
 
+    }
     
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -281,7 +315,7 @@ class LocationsTableViewController: UITableViewController {
         
         if fromPhotoLocationGenre != toPhotoLocationGenre {
             let alertController = UIAlertController(title: "Move Not Allowed!",
-                                                    message: "Please change the photo location genre by editing the item itself.",
+                                                    message: "You cannot change the photo genre/category.",
                                                     preferredStyle: UIAlertControllerStyle.alert)
             
             // Create a UIAlertAction object and add it to the alert controller
@@ -319,6 +353,7 @@ class LocationsTableViewController: UITableViewController {
             //
             let dataObject = [locationName, locationDetails, locationCoordinates, locationImage, locationNotes, locationRecordingURL]
             
+            print(dataObject)
             
             if let photosInGenre = applicationDelegate.dict_My_Photo_Locations[locationGenre] {
                 let photoLocationsInGenre = photosInGenre as! NSMutableDictionary

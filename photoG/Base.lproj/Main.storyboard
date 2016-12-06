@@ -227,6 +227,7 @@
                         <outlet property="detailLabel" destination="OfW-RH-LC8" id="Eue-HH-f09"/>
                         <outlet property="locationImageView" destination="uS6-tL-e08" id="5yo-pu-4Pe"/>
                         <outlet property="notesTextView" destination="sO4-ec-P0U" id="G07-To-gRA"/>
+                        <outlet property="playNotesButton" destination="DJA-uh-Ljx" id="xc8-Ns-xrX"/>
                         <segue destination="uzm-r9-gHO" kind="show" identifier="ShowSingleLocationMap" id="WoP-Oh-cjW"/>
                         <segue destination="yCq-Ns-xNU" kind="show" identifier="ShowSingleLocationFlickr" id="aa1-NW-c8J"/>
                     </connections>
@@ -501,27 +502,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L8Q-IO-yBW">
                                 <rect key="frame" x="62" y="127" width="250" height="250"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWL-dq-3GW">
-                                <rect key="frame" x="164" y="98" width="47" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="y8f-QR-PvZ"/>
+                                    <constraint firstAttribute="width" constant="250" id="hvi-J8-oVc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="dWL-dq-3GW" firstAttribute="centerX" secondItem="L8Q-IO-yBW" secondAttribute="centerX" id="7b0-mx-WnK"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="centerX" secondItem="Wic-8B-a5c" secondAttribute="centerX" id="Atq-xy-eJI"/>
-                            <constraint firstItem="0RD-1t-itN" firstAttribute="top" secondItem="L8Q-IO-yBW" secondAttribute="bottom" constant="241" id="NLP-yN-3vm"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="top" secondItem="dWL-dq-3GW" secondAttribute="bottom" constant="8" symbolic="YES" id="cmY-MV-2M0"/>
-                            <constraint firstItem="dWL-dq-3GW" firstAttribute="top" secondItem="mOy-OJ-Ou7" secondAttribute="bottom" constant="34" id="iCA-Ce-JWU"/>
-                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="leading" secondItem="Wic-8B-a5c" secondAttribute="leadingMargin" constant="46" id="lAR-5N-bgA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L8Q-IO-yBW" secondAttribute="trailing" constant="47" id="UtU-SM-gl5"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="leading" secondItem="Wic-8B-a5c" secondAttribute="leadingMargin" constant="46" id="ZXQ-jL-mdY"/>
+                            <constraint firstItem="L8Q-IO-yBW" firstAttribute="top" secondItem="mOy-OJ-Ou7" secondAttribute="bottom" constant="63" id="ovV-lU-JTo"/>
+                            <constraint firstItem="0RD-1t-itN" firstAttribute="top" secondItem="L8Q-IO-yBW" secondAttribute="bottom" constant="241" id="yMK-WD-Muh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Take Picture" id="eyH-rZ-qOD">

@@ -69,7 +69,6 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        imageView.contentMode = .scaleAspectFill
         imageView.image = image
         
         saveImageToDocumentsDirectory(image: image)
