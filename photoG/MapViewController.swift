@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadMap(_:)), name: Notification.Name("reload"), object: nil)
         // Do any additional setup after loading the view.
         
         // Set map view delegate with controller
@@ -29,6 +30,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func getLocations(){
+        photoLocationNames.removeAll()
+        photoLocationCoordinates.removeAll()
         let genres = applicationDelegate.array_Photo_Genres
         
         for genre in genres {
@@ -58,6 +61,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let name = photoLocationNames[i]
             let coordinate = photoLocationCoordinates[i]
             let coordinateArr = coordinate.components(separatedBy: ",")
+            
+            //wrap in try catch here
             let x = Double(coordinateArr[0])
             let y = Double(coordinateArr[1])
             
@@ -89,5 +94,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func reloadMap(_ notification: Notification) {
+        let annotations = self.mapView.annotations
+        mapView.removeAnnotations(annotations)
+        
+        getLocations()
+        addLocationsToMap()
+    }
 
 }

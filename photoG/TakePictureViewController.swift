@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class TakePictureViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class TakePictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var imageView: UIImageView!
     var locationName = ""
@@ -22,17 +22,20 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
     
     var cameraUseAuthorizedByUser = false
 
-    var imagePicker: UIImagePickerController!
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // - CAMERA SETUP
         checkAccessHasBeenGranted()
-        imagePicker =  UIImagePickerController()
+        
         imagePicker.delegate = self
+        
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = .camera
         imagePicker.cameraCaptureMode = .photo
+        imagePicker.modalPresentationStyle = .fullScreen
         
         present(imagePicker, animated: true, completion: nil)
         
@@ -61,17 +64,27 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         })
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            saveImageToDocumentsDirectory(image: image)
-        }
-
-        picker.dismiss(animated: true, completion: nil)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = image
+        
+        saveImageToDocumentsDirectory(image: image)
+        
+        //save image to doc dir.
+        
+        
+        dismiss(animated: true, completion: nil)
         
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        //add code here to handle not saving an image
+        dismiss(animated: true, completion: nil)
+    }
     
     func saveImageToDocumentsDirectory(image: UIImage?){
         // ** NEED TO save image to documents directory
@@ -80,13 +93,19 @@ class TakePictureViewController: UIViewController, UINavigationControllerDelegat
         
         let locationNameWithoutSpaces = locationName.replacingOccurrences(of: " ", with: "_")
         
-        if let img = image {
-            if let data = UIImageJPEGRepresentation(img, 0.8) {
-                let filename = directoryPath[0].appendingPathComponent("\\Images\\\(locationNameWithoutSpaces).png")
-                try? data.write(to: filename)
-                locationImage = filename.absoluteString
-            }
+        let data = UIImageJPEGRepresentation(image!, 0.8)
+        let filename = directoryPath[0].appendingPathComponent("Images/\(locationNameWithoutSpaces).jpg")
+        
+        do {
+            try data?.write(to: filename, options: .atomic)
+            
+        } catch {
+            print("error")
         }
+        locationImage = "Images/\(locationNameWithoutSpaces).jpg"
+
+        //http://stackoverflow.com/questions/35685685/how-to-save-an-image-picked-from-a-uiimagepickercontroller-in-swift
+        //http://stackoverflow.com/questions/33916652/how-to-save-image-or-video-from-uipickerviewcontroller-to-document-directory
 
     }
     

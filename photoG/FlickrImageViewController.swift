@@ -6,6 +6,11 @@
 //  Copyright © 2016 Lucas Rose. All rights reserved.
 //
 
+
+//API KEY: 24dd1b16e9c82b9ed5acb99d86d8e8a8
+
+//API SECRET: 743b56908ef6ad95
+
 import UIKit
 
 class FlickrImageViewController: UIViewController {

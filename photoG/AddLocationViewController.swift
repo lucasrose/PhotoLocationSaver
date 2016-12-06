@@ -54,6 +54,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             present(alertController, animated: true, completion: nil)
         }
         else{
+            //ADD CHECK TO MAKE SURE LOCATION HAS BEEN RECORDED BEFORE PERFORMING SEGUE!
             performSegue(withIdentifier: "RecordNotes", sender: self)
         }
     }
@@ -143,7 +144,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         manager.stopUpdatingLocation()
         let latitude = manager.location?.coordinate.latitude
         let longitude = manager.location?.coordinate.longitude
-        coordinates = "\(latitude!), \(longitude!)"
+        coordinates = "\(latitude!),\(longitude!)"
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){}

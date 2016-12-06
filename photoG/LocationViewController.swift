@@ -17,22 +17,28 @@ class LocationViewController: UIViewController {
     @IBOutlet var playButton: UIButton!
     @IBOutlet var notesTextView: UITextView!
     @IBOutlet var detailLabel: UILabel!
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var locationImageView: UIImageView!
     
     var coordinates = ""
     var recordingURL = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataObjectPassed)
 
         setTitle()
         detailLabel.text = dataObjectPassed[1]
         
         coordinates = dataObjectPassed[2]
+        //get image here
         
-        let image = UIImage(contentsOfFile: dataObjectPassed[3])
-        imageView.image = image
+        let paths = FileManager.default.urls(for: .documentDirectory,
+                                                     in: .userDomainMask)[0]
+        
+        let image = paths.appendingPathComponent(dataObjectPassed[3])
+        
+        if (paths.isFileURL){
+            locationImageView.image = UIImage(contentsOfFile: image.path)
+        }
         
         notesTextView.text = dataObjectPassed[4]
         
