@@ -91,7 +91,16 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         let directoryPath = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask)
         
-        let locationNameWithoutSpaces = locationName.replacingOccurrences(of: " ", with: "_")
+        var uniqueFilename = ""
+        
+        if (locationDetails.characters.count > 10){
+            let index = locationDetails.index(locationDetails.startIndex, offsetBy: 9)
+            uniqueFilename = locationName.appending(locationDetails.substring(to: index))
+        } else{
+            uniqueFilename = locationName.appending(locationDetails)
+        }
+        
+        let locationNameWithoutSpaces = uniqueFilename.replacingOccurrences(of: " ", with: "_")
         
         let data = UIImageJPEGRepresentation(image!, 0.8)
         let filename = directoryPath[0].appendingPathComponent("Images/\(locationNameWithoutSpaces).jpg")
