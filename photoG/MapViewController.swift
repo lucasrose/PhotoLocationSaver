@@ -10,26 +10,35 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
+    // MARK: Outlet References
     @IBOutlet var mapView: MKMapView!
     
+    // MARK: Application Delegate
     let applicationDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // MARK: Global Variables
     var photoLocationNames = [String]()
     var photoLocationCoordinates = [String]()
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Add Observer to update map after adding or deleting location
         NotificationCenter.default.addObserver(self, selector: #selector(reloadMap(_:)), name: Notification.Name("reload"), object: nil)
-        // Do any additional setup after loading the view.
         
         // Set map view delegate with controller
         self.mapView.delegate = self
+        
+        // Set map compass and scale
         mapView.showsCompass = true
         mapView.showsScale = true
+        
         getLocations()
         addLocationsToMap()
     }
     
+    // Update coordinates and locations for map
     func getLocations(){
         photoLocationNames.removeAll()
         photoLocationCoordinates.removeAll()
@@ -47,11 +56,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     ct += 1
                 }
             }
-
         }
-        
     }
     
+    // Add all new locations to the map
     func addLocationsToMap(){
         //get all locations from delegate
         let totalLocations = photoLocationNames.count
@@ -63,12 +71,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let coordinate = photoLocationCoordinates[i]
             let coordinateArr = coordinate.components(separatedBy: ",")
             
-            //wrap in try catch here
             let x = Double(coordinateArr[0])
             let y = Double(coordinateArr[1])
-            
-            
             let currentLocation = CLLocationCoordinate2DMake(x!, y!)
+            
             // Drop a pin
             let dropPin = MKPointAnnotation()
             dropPin.coordinate = currentLocation
@@ -78,7 +84,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             i += 1
         }
         mapView.showAnnotations(self.mapView.annotations, animated: true)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +91,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -97,6 +101,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     */
     
+    // Executes when reload notification is fired and updates the map
     func reloadMap(_ notification: Notification) {
         let annotations = self.mapView.annotations
         mapView.removeAnnotations(annotations)
@@ -104,5 +109,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         getLocations()
         addLocationsToMap()
     }
-
 }

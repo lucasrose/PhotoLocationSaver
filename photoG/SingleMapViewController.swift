@@ -10,23 +10,23 @@ import UIKit
 import MapKit
 
 class SingleMapViewController: UIViewController, MKMapViewDelegate {
-
+    // MARK: Outlet References
     @IBOutlet var singleLocationMapView: MKMapView!
     
+    // MARK: Global Variables
     var coordinates : String!
     var locationName : String!
     var locationDetails : String!
+    
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let coordinateArr = coordinates.components(separatedBy: ",")
         
-        //wrap in try catch here
         let x = Double(coordinateArr[0])
         let y = Double(coordinateArr[1])
-        
         let currentLocation = CLLocationCoordinate2DMake(x!, y!)
-        // Drop a pin
         
         let dropPin = MKPointAnnotation()
         
@@ -38,12 +38,10 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
         singleLocationMapView.showsScale = true
         
         singleLocationMapView.addAnnotation(dropPin)
-        
         singleLocationMapView.selectAnnotation(dropPin, animated: true)
 
         let region = getMapRegion(location: currentLocation)
         singleLocationMapView.setRegion(region, animated: true)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,13 +49,13 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // Set map view to region around single location
     func getMapRegion(location: CLLocationCoordinate2D) -> MKCoordinateRegion {
         let latLong = CLLocationDistance.init(8046.72)  //5 mile radius
         
         return MKCoordinateRegionMakeWithDistance(location, latLong, latLong)
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -67,5 +65,4 @@ class SingleMapViewController: UIViewController, MKMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

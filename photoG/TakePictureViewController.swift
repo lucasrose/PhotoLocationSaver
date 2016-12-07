@@ -10,8 +10,10 @@ import UIKit
 import AVFoundation
 
 class TakePictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    // MARK: Outlet References
     @IBOutlet var imageView: UIImageView!
+    
+    // MARK: Global Variables
     var locationName = ""
     var locationDetails = ""
     var locationCoordinates = ""
@@ -24,12 +26,13 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
 
     var imagePicker = UIImagePickerController()
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // - CAMERA SETUP
         checkAccessHasBeenGranted()
         
+        // Set image picker to be delegate
         imagePicker.delegate = self
         
         imagePicker.allowsEditing = false
@@ -47,6 +50,7 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
+    // Verify the user has granted camera access
     func checkAccessHasBeenGranted() {
         AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: {
             
@@ -64,26 +68,27 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         })
     }
     
+    // Sets the image and passes image to be saved to documents directory
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
         imageView.image = image
         
         saveImageToDocumentsDirectory(image: image)
-                
-        dismiss(animated: true, completion: nil)
         
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        //add code here to handle not saving an image
+        // dismisses the UIImagePickerController
         dismiss(animated: true, completion: nil)
     }
     
+    // Cancels UIImagePickerController
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // dismiss UIImagePickerController after cancel
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Saves image taken to documents directory
     func saveImageToDocumentsDirectory(image: UIImage?){
-        // ** NEED TO save image to documents directory
         let directoryPath = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask)
         
@@ -108,10 +113,8 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
             print("error")
         }
         locationImage = "Images/\(locationNameWithoutSpaces).jpg"
-
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -121,5 +124,4 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         // Pass the selected object to the new view controller.
     }
     */
-
 }

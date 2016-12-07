@@ -10,20 +10,23 @@ import UIKit
 import AVFoundation
 
 class LocationViewController: UIViewController, AVAudioPlayerDelegate {
-
-    var dataObjectPassed = [String]()
-    
+    // MARK: Outlet References
     @IBOutlet var playNotesButton: UIButton!
     @IBOutlet var notesTextView: UITextView!
     @IBOutlet var detailLabel: UILabel!
     @IBOutlet var locationImageView: UIImageView!
     
+    // MARK: Global Variables
+    var dataObjectPassed = [String]()
     var coordinates = ""
     var recordingURL : URL!
     
     var player: AVAudioPlayer!
     var audioSession: AVAudioSession!
 
+    // MARK: Outlet Functions
+    
+    // Plays Recorded Audio Notes
     @IBAction func playAudioNotesButtonTapped(_ sender: UIButton) {
             do {
                 
@@ -38,14 +41,17 @@ class LocationViewController: UIViewController, AVAudioPlayerDelegate {
         
     }
     
+    // Show Flickr View Controller
     @IBAction func showOnFlickrButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "ShowSingleLocationFlickr", sender: self)
     }
     
+    // Show Map View Controller
     @IBAction func showOnMapButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "ShowSingleLocationMap", sender: self)
     }
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,18 +92,20 @@ class LocationViewController: UIViewController, AVAudioPlayerDelegate {
             }
         }
         
-        // Do any additional setup after loading the view.
     }
     
+    // Sets Title Bar of Location View
     func setTitle() {
         let labelRect = CGRect(x: 0, y: 0, width: 300, height: 42)
         let titleLabel = UILabel(frame: labelRect)
+        
         titleLabel.text = dataObjectPassed[0] // Photo Location Name
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.font = UIFont(name: "Avenir Next", size: 16)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
+        
         self.navigationItem.titleView = titleLabel
     }
     
@@ -105,9 +113,7 @@ class LocationViewController: UIViewController, AVAudioPlayerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -126,6 +132,4 @@ class LocationViewController: UIViewController, AVAudioPlayerDelegate {
             flickrImageViewController.locationName = dataObjectPassed[0]
         }
     }
-    
-
 }

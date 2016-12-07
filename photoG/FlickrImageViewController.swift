@@ -6,25 +6,20 @@
 //  Copyright © 2016 Lucas Rose. All rights reserved.
 //
 
-
-//API KEY: 24dd1b16e9c82b9ed5acb99d86d8e8a8
-
-//API SECRET: 743b56908ef6ad95
-
 import UIKit
 
 class FlickrImageViewController: UIViewController {
-
+    // MARK: Global Variables
     var locationName : String!
     var setOfPhotos = NSMutableArray()
     var imageNumber = 0
     
+    // MARK: Outlet Variables
     @IBOutlet var nextButton: UIButton!
-    
     @IBOutlet var previousButton: UIButton!
-    
     @IBOutlet var flickrImageView: UIImageView!
     
+    // MARK: Outlet Functions
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         imageNumber += 1
         enableDisableButtons()
@@ -33,7 +28,6 @@ class FlickrImageViewController: UIViewController {
             let flickrPhoto: FlickrSearch.FlickrPhoto = setOfPhotos.object(at: imageNumber) as! FlickrSearch.FlickrPhoto
             self.flickrImageView.image = flickrPhoto.image
         }
-        
     }
     
     @IBAction func previousButtonTapped(_ sender: UIButton) {
@@ -43,7 +37,7 @@ class FlickrImageViewController: UIViewController {
         self.flickrImageView.image = flickrPhoto.image
     }
     
-    
+    // Disables buttons when no more photos left before or after the current one
     func enableDisableButtons(){
         if imageNumber > 0 {
             previousButton.isEnabled = true
@@ -58,6 +52,7 @@ class FlickrImageViewController: UIViewController {
         }
     }
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,10 +63,12 @@ class FlickrImageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // Fetches photos from Flickr Asynchronously and updates the image shown and the photo array
     func getPhotosFromFlickr(){
         previousButton.isEnabled = false
         nextButton.isEnabled = false
 
+        // Create Flickr Search
         let flickrSearch = FlickrSearch()
         flickrSearch.searchFlickrWithQuery(searchString: locationName, completion: {(searchString: String?, flickrPhotos: NSMutableArray?, error: NSError?) -> () in
             
@@ -81,6 +78,7 @@ class FlickrImageViewController: UIViewController {
                 let flickrPhoto: FlickrSearch.FlickrPhoto = flickrPhotos?.object(at: 0) as! FlickrSearch.FlickrPhoto
                 let image = flickrPhoto.image
                 
+                // Update UI on Main Thread
                 DispatchQueue.main.async {
                     
                     if image != nil {
@@ -92,12 +90,12 @@ class FlickrImageViewController: UIViewController {
 
                 }
                 
+                // Add photos to array
                 for photo in flickrPhotos! {
                     self.setOfPhotos.add(photo)
                     
                 }
             }
-            
         })
     }
 
@@ -106,7 +104,7 @@ class FlickrImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // Displays an error if no relevant photos from Flickr were found
     func showError(){
         let alertController = UIAlertController(title: "No Photos Found",
                                                 message: "Sorry, no photos from Flickr matched your description.",
@@ -119,9 +117,6 @@ class FlickrImageViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    
-    
-
     /*
     // MARK: - Navigation
 
@@ -131,5 +126,4 @@ class FlickrImageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

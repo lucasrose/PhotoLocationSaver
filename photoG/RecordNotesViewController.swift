@@ -10,13 +10,13 @@ import UIKit
 import AVFoundation
 
 class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
-
+    // MARK: Outlet References
     @IBOutlet var writtenNotesTextView: UITextView!
-    
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var recordButton: UIButton!
     
+    // MARK: Global Variables
     var locationName = ""
     var locationDetails = ""
     var locationGenre = ""
@@ -27,6 +27,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
     var recorder: AVAudioRecorder!
     var player: AVAudioPlayer!
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,10 +37,11 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         stopButton.isHidden = true
         playButton.isEnabled = false
         
-        
-
-        // Do any additional setup after loading the view.
     }
+    
+    // MARK: Outlet Functions
+    
+    // Stops playing the recorded notes
     @IBAction func stopButtonTapped(_ sender: UIButton) {
         recordButton.isHidden = false
         recordButton.isEnabled = true
@@ -55,6 +57,8 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
             recorder?.stop()
         }
     }
+    
+    // Starts playing the recorded notes
     @IBAction func playButtonTapped(_ sender: UIButton) {
         if recorder?.isRecording == false {
             do {
@@ -69,6 +73,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         }
     }
     
+    // Sets up the recording, file creation, and allows playback
     func setUpRecordingAndPlayback(){
         let directoryPath = FileManager.default.urls(for: .documentDirectory,
                                                      in: .userDomainMask)
@@ -111,6 +116,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         locationRecordingURL = "Recordings/\(locationNameWithoutSpaces).caf"
     }
     
+    // Starts a new audio recording
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         setUpRecordingAndPlayback()
         
@@ -127,6 +133,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         }
     }
 
+    // Show the Take Picture View Controller
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "TakePicture", sender: self)
     }
@@ -134,7 +141,6 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /*
      ---------------------------------
@@ -155,7 +161,6 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
     @IBAction func userTappedBackground(sender: AnyObject) {
         view.endEditing(true)
     }
-
     
     // MARK: - Navigation
 
@@ -166,7 +171,7 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
         if (segue.identifier == "TakePicture") {
             let takePictureViewController: TakePictureViewController = segue.destination as! TakePictureViewController
             
-            // - ***MAKE SURE TO PASS AUDIO FILE NAME FOR NOTES
+            // Pass data to Take Picture View Controller
             takePictureViewController.locationName = locationName
             takePictureViewController.locationDetails = locationDetails
             takePictureViewController.locationNotes = writtenNotesTextView.text
@@ -176,6 +181,4 @@ class RecordNotesViewController: UIViewController, UITextViewDelegate, AVAudioPl
 
         }
     }
- 
-
 }

@@ -11,32 +11,35 @@ import MapKit
 import CoreLocation
 
 class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, CLLocationManagerDelegate {
+    // MARK: Application Delegate
     let applicationDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    // MARK: Outlet References
     @IBOutlet var locationDetailsTextField: UITextField!
     @IBOutlet var locationGenrePickerView: UIPickerView!
     @IBOutlet var locationNameTextField: UITextField!
     
+    // MARK: Gloabl Variables
     var photoGenres = [String]()
     var coordinates : String!
     
     var locationManager : CLLocationManager!
     
+    // MARK: View Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
         photoGenres = applicationDelegate.array_Photo_Genres as! [String]
         photoGenres.sort { $0 < $1 }
         
-        
+        // Show Middle Item in Picker
         let numberOfRowToShow = Int(photoGenres.count / 2)
         locationGenrePickerView.selectRow(numberOfRowToShow, inComponent: 0, animated: false)
-        
-        // Do any additional setup after loading the view.
         
         getCurrentLocation()
     }
 
+    // MARK: Outlet Function
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         
         if (locationNameTextField.text == "" || locationDetailsTextField.text == ""){
@@ -76,8 +79,6 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
             // Obtain the object reference of the destination view controller
             let recordNotesViewController: RecordNotesViewController = segue.destination as! RecordNotesViewController
             
-            // Under the Delegation Design Pattern, set the addCityViewController's delegate to be self
-            
             let selectedRowNumber = locationGenrePickerView.selectedRow(inComponent: 0)
             
             let photoGenre = photoGenres[selectedRowNumber]
@@ -89,9 +90,11 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
+    // Retrieves current location after requesting authorization from user
     func getCurrentLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        
         self.locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
@@ -111,6 +114,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return photoGenres.count
     }
     
+    // Sets the PickerView Design/Fonts
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         pickerLabel.textColor = UIColor.black
@@ -150,13 +154,16 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         view.endEditing(true)
     }
     
+    // Stops updating the location and sets coordinates after grabbing a valid location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         manager.stopUpdatingLocation()
+        
         let latitude = manager.location?.coordinate.latitude
         let longitude = manager.location?.coordinate.longitude
+        
         coordinates = "\(latitude!),\(longitude!)"
     }
     
+    // Retrieves error information from location manager.. required for CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){}
-    
 }
