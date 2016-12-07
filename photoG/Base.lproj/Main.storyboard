@@ -247,12 +247,46 @@
                     <view key="view" contentMode="scaleToFill" id="PzI-ed-HJD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NSK-y7-8cd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZz-g9-5P0">
+                                <rect key="frame" x="10" y="333" width="59" height="30"/>
+                                <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="previousButtonTapped:" destination="yCq-Ns-xNU" eventType="touchUpInside" id="QH8-Ou-Y3I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJE-uB-hIH">
+                                <rect key="frame" x="320" y="333" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="yCq-Ns-xNU" eventType="touchUpInside" id="zM1-fM-6Z2"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NSK-y7-8cd" firstAttribute="top" secondItem="6A2-0h-jTC" secondAttribute="bottom" id="a74-ug-hvd"/>
+                            <constraint firstItem="Zhl-Ye-DL7" firstAttribute="top" secondItem="NSK-y7-8cd" secondAttribute="bottom" id="ahA-Lv-0Vz"/>
+                            <constraint firstItem="uZz-g9-5P0" firstAttribute="centerY" secondItem="PzI-ed-HJD" secondAttribute="centerY" constant="14.5" id="ahN-VB-1mL"/>
+                            <constraint firstItem="NSK-y7-8cd" firstAttribute="leading" secondItem="PzI-ed-HJD" secondAttribute="leading" id="bnI-Jx-cXy"/>
+                            <constraint firstItem="uZz-g9-5P0" firstAttribute="baseline" secondItem="gJE-uB-hIH" secondAttribute="baseline" id="eN4-cc-qWE"/>
+                            <constraint firstItem="uZz-g9-5P0" firstAttribute="leading" secondItem="PzI-ed-HJD" secondAttribute="leadingMargin" constant="-6" id="nHE-fr-t17"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gJE-uB-hIH" secondAttribute="trailing" constant="7" id="ptS-92-zuk"/>
+                            <constraint firstAttribute="trailing" secondItem="NSK-y7-8cd" secondAttribute="trailing" id="yBv-Vw-ngj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="flickrImageView" destination="NSK-y7-8cd" id="lwP-yB-BjJ"/>
+                        <outlet property="nextButton" destination="gJE-uB-hIH" id="olI-Om-C1d"/>
+                        <outlet property="previousButton" destination="uZz-g9-5P0" id="fzo-qn-s4b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjU-ZZ-CbL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4778" y="780"/>
+            <point key="canvasLocation" x="4776.8000000000002" y="779.46026986506752"/>
         </scene>
         <!--Single Map View Controller-->
         <scene sceneID="e1x-WW-QGU">

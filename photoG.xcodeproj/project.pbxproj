@@ -16,6 +16,8 @@
 		951E232C1DC01F91007A783F /* photoGTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E232B1DC01F91007A783F /* photoGTests.swift */; };
 		951E23371DC01F91007A783F /* photoGUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E23361DC01F91007A783F /* photoGUITests.swift */; };
 		951F62EE1DF674EA008CEEDA /* SingleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */; };
+		954342801DF76C6200A92603 /* FlickrSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9543427F1DF76C6200A92603 /* FlickrSearch.swift */; };
+		955F65831DF78C8300EA9619 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F65821DF78C8300EA9619 /* SwiftyJSON.swift */; };
 		956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820131DE36648004A98EA /* LocationsTableViewController.swift */; };
 		956820161DE3665F004A98EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820151DE3665F004A98EA /* MapViewController.swift */; };
 		956820181DE3666B004A98EA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820171DE3666B004A98EA /* WebViewController.swift */; };
@@ -63,6 +65,8 @@
 		951E23361DC01F91007A783F /* photoGUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoGUITests.swift; sourceTree = "<group>"; };
 		951E23381DC01F91007A783F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleMapViewController.swift; sourceTree = "<group>"; };
+		9543427F1DF76C6200A92603 /* FlickrSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearch.swift; sourceTree = "<group>"; };
+		955F65821DF78C8300EA9619 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		956820131DE36648004A98EA /* LocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
 		956820151DE3665F004A98EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		956820171DE3666B004A98EA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 		951E230A1DC01F90007A783F = {
 			isa = PBXGroup;
 			children = (
+				955F65821DF78C8300EA9619 /* SwiftyJSON.swift */,
 				951E23151DC01F90007A783F /* photoG */,
 				951E232A1DC01F91007A783F /* photoGTests */,
 				951E23351DC01F91007A783F /* photoGUITests */,
@@ -191,6 +196,7 @@
 				951817321DE52B230034C139 /* RecordNotesViewController.swift */,
 				951817341DE52B2E0034C139 /* TakePictureViewController.swift */,
 				951F62ED1DF674EA008CEEDA /* SingleMapViewController.swift */,
+				9543427F1DF76C6200A92603 /* FlickrSearch.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 				951817351DE52B2E0034C139 /* TakePictureViewController.swift in Sources */,
 				95C7C13D1DE3DFC000137E6C /* LocationViewController.swift in Sources */,
 				951817331DE52B230034C139 /* RecordNotesViewController.swift in Sources */,
+				955F65831DF78C8300EA9619 /* SwiftyJSON.swift in Sources */,
 				9568201A1DE3667A004A98EA /* FlickrImageViewController.swift in Sources */,
 				956820231DE37AD7004A98EA /* AddLocationViewController.swift in Sources */,
 				956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */,
@@ -344,6 +351,7 @@
 				951F62EE1DF674EA008CEEDA /* SingleMapViewController.swift in Sources */,
 				951E23171DC01F90007A783F /* AppDelegate.swift in Sources */,
 				956820181DE3666B004A98EA /* WebViewController.swift in Sources */,
+				954342801DF76C6200A92603 /* FlickrSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
