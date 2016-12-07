@@ -10,39 +10,36 @@ import UIKit
 
 class LocationsTableViewController: UITableViewController {
 
+    // Use application delegate to access user data
     let applicationDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
+    // MARK: Outlet References
     @IBOutlet var photoLocationsTableView: UITableView!
-    var myPhotoGenres = [String]()
     
+    // MARK: Local Variables
+    var myPhotoGenres = [String]()
     var dataObjectToPass = [String]()
     
+    //MARK: View Overload Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
 
-        // Set up the Add button on the right of the navigation bar to call the addCity method when tapped
         let addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(LocationsTableViewController.addLocation(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         
         myPhotoGenres = applicationDelegate.dict_My_Photo_Locations.allKeys as! [String]
         myPhotoGenres.sort { $0 < $1 }
-        
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
+    // MARK: - TableView Data Source Methods
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return applicationDelegate.dict_My_Photo_Locations.count
@@ -52,7 +49,6 @@ class LocationsTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         
         let photoGenre = myPhotoGenres[section]
-        
         let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[photoGenre] as AnyObject
         
         return photoLocations!.count
@@ -64,10 +60,8 @@ class LocationsTableViewController: UITableViewController {
      -----------------------
      */
     
-    // The addMovie method is invoked when the user taps the Add button created in viewDidLoad() above.
+    // The addLocation method is invoked when the user taps the Add button created in viewDidLoad() above.
     func addLocation(_ sender: AnyObject) {
-        
-        // Perform the segue named AddCity
         performSegue(withIdentifier: "AddLocation", sender: self)
     }
     
@@ -75,17 +69,14 @@ class LocationsTableViewController: UITableViewController {
     // Set Title for Section Header
     //-----------------------------
     
-    // Set the table view section header to be the country name
+    // Set the table view section header to be the photo genre name
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
-        
         return myPhotoGenres[section]
     }
     
     //-------------------------------------
     // Prepare and Return a Table View Cell
     //-------------------------------------
-    
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
@@ -99,38 +90,27 @@ class LocationsTableViewController: UITableViewController {
         // Obtain the list of photo locations in given photo genre
         let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[givenPhotoGenre] as AnyObject
         
-        
         let location = photoLocations?["\(rowNumber + 1)"] as! [String]
         
         let locationName = location[0]
         let locationDescription = location[1]
-        //let locationCoordinates = location[2]
-        //let locationImage = location[3]
-        //let locationNotes = location[4]
         
         // Configure the cell...
-        
         cell.textLabel!.text = locationName
         cell.detailTextLabel!.text = locationDescription
-        //cell.imageView!.image = UIImage(named: rating)
 
         return cell
     }
 
-    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
-
-    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            
             // Obtain the name of the genre of the photo to be deleted
             let genreOfPhotoLocationToDelete = myPhotoGenres[(indexPath as NSIndexPath).section]
             
@@ -157,7 +137,6 @@ class LocationsTableViewController: UITableViewController {
                 
                 deleteRecordingAndImage(photoLocationsInGenre: photoLocationsInGenre)
                 photoLocationsInGenre.removeObject(forKey: "\(photoLocationsInGenre.count)")
-                //remove audio note and image here
             }
 
             if photoLocationsInGenre.count == 0 {
@@ -165,6 +144,7 @@ class LocationsTableViewController: UITableViewController {
                 
                 // Since the dictionary has been changed, obtain the photo genre names again
                 myPhotoGenres = applicationDelegate.dict_My_Photo_Locations.allKeys as! [String]
+                
                 // Sort the genre names within itself in alphabetical order
                 myPhotoGenres.sort { $0 < $1 }
             }
@@ -173,10 +153,14 @@ class LocationsTableViewController: UITableViewController {
             }
             
             photoLocationsTableView.reloadData()
+            
+            // Alert the map to remove the new location and resize
             NotificationCenter.default.post(name: Notification.Name("reload"), object: nil)
         }
     }
     
+    // This method will search for an image and audio recording for the photo location about to be deleted.
+    // it will then be deleted from the user document directory if it existed
     func deleteRecordingAndImage(photoLocationsInGenre: NSMutableDictionary){
         let deletedPhotoLocation = photoLocationsInGenre.value(forKey: "\(photoLocationsInGenre.count)") as! [String]
         
@@ -188,6 +172,8 @@ class LocationsTableViewController: UITableViewController {
         
         let photoFilename = directoryPath[0].appendingPathComponent(imagePath)
         let recordingFilename = directoryPath[0].appendingPathComponent(recordingPath)
+        
+        // Check to make sure the paths are files and not empty before trying to delete
         
         if (photoFilename.isFileURL && imagePath != ""){
             do {
@@ -224,14 +210,13 @@ class LocationsTableViewController: UITableViewController {
         
         photoLocationsInGenre = photoLocationsReorderedInGenre(photoLocationsInGenre: photoLocationsInGenre, from: rowNumberFrom, to: rowNumberTo)
 
-        // Update the new list of cities for the country in the NSMutableDictionary
+        // Update the dictionary
         applicationDelegate.dict_My_Photo_Locations.setValue(photoLocationsInGenre, forKey: genreOfPhotoLocationToDelete)
     }
     
     //---------------------
     // Reordered photo locations method
     //---------------------
-    
     
     func photoLocationsReorderedInGenre(photoLocationsInGenre: NSMutableDictionary, from: Int, to: Int) -> NSMutableDictionary{
         var tempArray: NSMutableArray = []
@@ -270,13 +255,11 @@ class LocationsTableViewController: UITableViewController {
         return photoLocationsInGenre
     }
 
-    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    
     
     /*
      ----------------------------------
@@ -303,10 +286,10 @@ class LocationsTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Perform the segue named showLocation
         performSegue(withIdentifier: "ShowLocationCell", sender: self)
     }
     
+    // This method is invoked when the user taps a table view row's detail disclosure
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let sectionNumber = (indexPath as NSIndexPath).section
         let rowNumber = (indexPath as NSIndexPath).row
@@ -322,7 +305,6 @@ class LocationsTableViewController: UITableViewController {
         // Prepare the data object to pass to the downstream view controller
         dataObjectToPass = location
         
-        // Perform the segue named showLocation
         performSegue(withIdentifier: "ShowDetailFlickr", sender: self)
     }
     
@@ -371,9 +353,7 @@ class LocationsTableViewController: UITableViewController {
             let locationRecordingURL = controller.locationRecordingURL
             //
             let dataObject = [locationName, locationDetails, locationCoordinates, locationImage, locationNotes, locationRecordingURL]
-            
-            print(dataObject)
-            
+                        
             if let photosInGenre = applicationDelegate.dict_My_Photo_Locations[locationGenre] {
                 let photoLocationsInGenre = photosInGenre as! NSMutableDictionary
                 let count = photoLocationsInGenre.count
@@ -387,13 +367,13 @@ class LocationsTableViewController: UITableViewController {
                 applicationDelegate.dict_My_Photo_Locations.setValue(newDictionary, forKey: locationGenre)
             }
             
-            
-            
             myPhotoGenres = applicationDelegate.dict_My_Photo_Locations.allKeys as! [String]
             myPhotoGenres.sort { $0 < $1 }
             
             
             tableView.reloadData()
+            
+            // Alert the map to update after adding a new photo location
             NotificationCenter.default.post(name: Notification.Name("reload"), object: nil)
         }
     }
@@ -402,22 +382,15 @@ class LocationsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
         if segue.identifier == "ShowLocationCell" {
             
             // Obtain the object reference of the destination view controller
             let locationViewController: LocationViewController = segue.destination as! LocationViewController
             
-            // Under the Delegation Design Pattern, set the addCityViewController's delegate to be self
             locationViewController.dataObjectPassed = dataObjectToPass
         } else if segue.identifier == "ShowDetailFlickr" {
             let flickrImageViewController: FlickrImageViewController = segue.destination as! FlickrImageViewController
             flickrImageViewController.locationName = dataObjectToPass[0]
-            
         }
     }
- 
-
 }
