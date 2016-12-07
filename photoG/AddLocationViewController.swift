@@ -28,6 +28,7 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
         photoGenres = applicationDelegate.array_Photo_Genres as! [String]
         photoGenres.sort { $0 < $1 }
         
+        
         let numberOfRowToShow = Int(photoGenres.count / 2)
         locationGenrePickerView.selectRow(numberOfRowToShow, inComponent: 0, animated: false)
         
@@ -108,6 +109,15 @@ class AddLocationViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ locationGenrePickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         return photoGenres.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = UIColor.black
+        pickerLabel.text = photoGenres[row]
+        pickerLabel.font = UIFont(name: "Avenir Next", size: 16)
+        pickerLabel.textAlignment = NSTextAlignment.center
+        return pickerLabel
     }
     
     /*

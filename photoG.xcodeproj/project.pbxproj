@@ -20,7 +20,6 @@
 		955F65831DF78C8300EA9619 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F65821DF78C8300EA9619 /* SwiftyJSON.swift */; };
 		956820141DE36648004A98EA /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820131DE36648004A98EA /* LocationsTableViewController.swift */; };
 		956820161DE3665F004A98EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820151DE3665F004A98EA /* MapViewController.swift */; };
-		956820181DE3666B004A98EA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820171DE3666B004A98EA /* WebViewController.swift */; };
 		9568201A1DE3667A004A98EA /* FlickrImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956820191DE3667A004A98EA /* FlickrImageViewController.swift */; };
 		9568201D1DE376B9004A98EA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568201C1DE376B9004A98EA /* WebKit.framework */; };
 		9568201F1DE376BE004A98EA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9568201E1DE376BE004A98EA /* MapKit.framework */; };
@@ -69,7 +68,6 @@
 		955F65821DF78C8300EA9619 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		956820131DE36648004A98EA /* LocationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
 		956820151DE3665F004A98EA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		956820171DE3666B004A98EA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		956820191DE3667A004A98EA /* FlickrImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrImageViewController.swift; sourceTree = "<group>"; };
 		9568201C1DE376B9004A98EA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9568201E1DE376BE004A98EA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -189,7 +187,6 @@
 			children = (
 				956820131DE36648004A98EA /* LocationsTableViewController.swift */,
 				956820151DE3665F004A98EA /* MapViewController.swift */,
-				956820171DE3666B004A98EA /* WebViewController.swift */,
 				956820191DE3667A004A98EA /* FlickrImageViewController.swift */,
 				956820221DE37AD7004A98EA /* AddLocationViewController.swift */,
 				95C7C13C1DE3DFC000137E6C /* LocationViewController.swift */,
@@ -350,7 +347,6 @@
 				956820161DE3665F004A98EA /* MapViewController.swift in Sources */,
 				951F62EE1DF674EA008CEEDA /* SingleMapViewController.swift in Sources */,
 				951E23171DC01F90007A783F /* AppDelegate.swift in Sources */,
-				956820181DE3666B004A98EA /* WebViewController.swift in Sources */,
 				954342801DF76C6200A92603 /* FlickrSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

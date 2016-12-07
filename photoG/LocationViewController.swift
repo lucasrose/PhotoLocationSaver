@@ -94,6 +94,7 @@ class LocationViewController: UIViewController, AVAudioPlayerDelegate {
         let titleLabel = UILabel(frame: labelRect)
         titleLabel.text = dataObjectPassed[0] // Photo Location Name
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.font = UIFont(name: "Avenir Next", size: 16)
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
