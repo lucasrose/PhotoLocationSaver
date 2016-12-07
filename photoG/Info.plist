@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>placebook</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,11 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This application requires use of your device&apos;s camera to take pictures of the photo location.</string>
+	<string>This application requires use of your device's camera to take pictures of the photo location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires use of your location to store photo spots.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This application requires use of your device&apos;s microphone to record audio notes. They will not be shared outside the application.</string>
+	<string>This application requires use of your device's microphone to record audio notes. They will not be shared outside the application.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

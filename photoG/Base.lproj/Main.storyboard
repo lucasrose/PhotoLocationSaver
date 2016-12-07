@@ -590,7 +590,7 @@
         <scene sceneID="rRQ-gY-Ah5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TA9-AA-Rp1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="fdM-TO-DN4"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="TabBarIcon-Map" id="fdM-TO-DN4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="do5-9h-REy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -609,7 +609,7 @@
         <scene sceneID="2wW-Aq-znk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LXb-W6-EWh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Locations" id="l3B-Sd-Q6Q"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="TabBarIcon-Locations" id="l3B-Sd-Q6Q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uGV-a7-Olo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -625,4 +625,8 @@
             <point key="canvasLocation" x="1882.4000000000001" y="-0.44977511244377816"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TabBarIcon-Locations" width="30" height="30"/>
+        <image name="TabBarIcon-Map" width="30" height="30"/>
+    </resources>
 </document>
