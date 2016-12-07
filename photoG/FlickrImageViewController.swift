@@ -82,8 +82,14 @@ class FlickrImageViewController: UIViewController {
                 let image = flickrPhoto.image
                 
                 DispatchQueue.main.async {
-                    self.flickrImageView.image = image
-                    self.nextButton.isEnabled = true
+                    
+                    if image != nil {
+                        self.flickrImageView.image = image
+                        self.nextButton.isEnabled = true
+                    } else {
+                        self.showError()
+                    }
+
                 }
                 
                 for photo in flickrPhotos! {
@@ -100,6 +106,18 @@ class FlickrImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func showError(){
+        let alertController = UIAlertController(title: "No Photos Found",
+                                                message: "Sorry, no photos from Flickr matched your description.",
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        
+        // Create a UIAlertAction object and add it to the alert controller
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // Present the alert controller by calling the presentViewController method
+        present(alertController, animated: true, completion: nil)
+    }
     
     
     
