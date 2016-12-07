@@ -307,7 +307,26 @@ class LocationsTableViewController: UITableViewController {
         performSegue(withIdentifier: "ShowLocationCell", sender: self)
     }
     
-    // This method is invoked when the user attempts to move a row (movie)
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let sectionNumber = (indexPath as NSIndexPath).section
+        let rowNumber = (indexPath as NSIndexPath).row
+        
+        // Obtain the name of the photo genre
+        let givenPhotoGenre = myPhotoGenres[sectionNumber]
+        
+        // Obtain the list of photo locations in given photo genre
+        let photoLocations: AnyObject? = applicationDelegate.dict_My_Photo_Locations[givenPhotoGenre] as AnyObject
+        
+        let location = photoLocations?["\(rowNumber + 1)"] as! [String]
+        
+        // Prepare the data object to pass to the downstream view controller
+        dataObjectToPass = location
+        
+        // Perform the segue named showLocation
+        performSegue(withIdentifier: "ShowDetailFlickr", sender: self)
+    }
+    
+    // This method is invoked when the user attempts to move a row
     override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         
         let fromPhotoLocationGenre = myPhotoGenres[(sourceIndexPath as NSIndexPath).section]
@@ -393,6 +412,10 @@ class LocationsTableViewController: UITableViewController {
             
             // Under the Delegation Design Pattern, set the addCityViewController's delegate to be self
             locationViewController.dataObjectPassed = dataObjectToPass
+        } else if segue.identifier == "ShowDetailFlickr" {
+            let flickrImageViewController: FlickrImageViewController = segue.destination as! FlickrImageViewController
+            flickrImageViewController.locationName = dataObjectToPass[0]
+            
         }
     }
  

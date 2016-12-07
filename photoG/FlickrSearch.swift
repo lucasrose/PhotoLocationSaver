@@ -63,8 +63,6 @@ class FlickrSearch {
             } else {
                 let data: Data! = (searchResult.data(using: String.Encoding.utf8, allowLossyConversion: false) as Data!)
                 
-                
-                print(data)
                 //USE SwiftyJSON Library for cleaner JSON Parsing
                 let json = JSON(data: data)
 
@@ -120,15 +118,9 @@ class FlickrSearch {
                     
                 }
                 
-                
-                
-                
-                                
             }
         }
     }
-    
-    
     
     class FlickrPhoto : NSObject {
         var photoID : String!
@@ -140,14 +132,7 @@ class FlickrSearch {
         
         override init(){    // override NSObject parent class
             
-            
         }
-        
-        
-        
-        
-        
     }
-    
-    
+  
 }

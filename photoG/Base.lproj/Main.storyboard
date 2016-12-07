@@ -55,6 +55,7 @@
                         <outlet property="photoLocationsTableView" destination="btR-1A-me3" id="eaq-6f-j8Q"/>
                         <segue destination="EPK-4t-Fcv" kind="show" identifier="AddLocation" id="KDW-Wn-jLq"/>
                         <segue destination="c7n-zw-zwS" kind="show" identifier="ShowLocationCell" id="RXf-rA-zql"/>
+                        <segue destination="yCq-Ns-xNU" kind="show" identifier="ShowDetailFlickr" id="FKZ-LS-0cS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="va1-aR-6R1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVa-h2-P5F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3816.8000000000002" y="503.29835082458777"/>
+            <point key="canvasLocation" x="3782" y="-34"/>
         </scene>
         <!--Flickr Image View Controller-->
         <scene sceneID="6hI-Jz-acc">
@@ -611,4 +612,7 @@
         <image name="TabBarIcon-Locations" width="30" height="30"/>
         <image name="TabBarIcon-Map" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FKZ-LS-0cS"/>
+    </inferredMetricsTieBreakers>
 </document>
