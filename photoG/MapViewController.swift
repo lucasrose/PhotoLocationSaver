@@ -45,7 +45,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let genres = applicationDelegate.array_Photo_Genres
         
         for genre in genres {
-            print(genre)
             if let currentGenreLocations = applicationDelegate.dict_My_Photo_Locations[genre] as? NSDictionary{
                 var ct = 1
                 while(ct <= currentGenreLocations.count) {
